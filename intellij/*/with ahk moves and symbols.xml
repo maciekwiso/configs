@@ -1,0 +1,95 @@
+<keymap version="1" name="with ahk moves and symbols" parent="$default">
+  <action id="ActivateTerminalToolWindow">
+    <keyboard-shortcut first-keystroke="alt f12" />
+    <keyboard-shortcut first-keystroke="alt t" second-keystroke="t" />
+  </action>
+  <action id="Back">
+    <keyboard-shortcut first-keystroke="ctrl alt left" />
+    <mouse-shortcut keystroke="button4" />
+    <keyboard-shortcut first-keystroke="alt comma" />
+  </action>
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="ctrl f4" />
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
+  <action id="Debug">
+    <keyboard-shortcut first-keystroke="shift f9" />
+    <keyboard-shortcut first-keystroke="alt t" second-keystroke="d" />
+  </action>
+  <action id="EditSource">
+    <keyboard-shortcut first-keystroke="f4" />
+    <keyboard-shortcut first-keystroke="ctrl alt o" />
+  </action>
+  <action id="EditorCodeBlockEnd" />
+  <action id="EditorCodeBlockStart" />
+  <action id="EditorJoinLines" />
+  <action id="EditorSelectWord">
+    <keyboard-shortcut first-keystroke="shift ctrl 7" />
+  </action>
+  <action id="EditorSwapSelectionBoundaries">
+    <keyboard-shortcut first-keystroke="alt p" />
+  </action>
+  <action id="EditorToggleStickySelection">
+    <keyboard-shortcut first-keystroke="alt y" />
+  </action>
+  <action id="ExportToTextFile" />
+  <action id="FileStructurePopup">
+    <keyboard-shortcut first-keystroke="ctrl f12" />
+    <keyboard-shortcut first-keystroke="ctrl s" />
+  </action>
+  <action id="Forward">
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+    <mouse-shortcut keystroke="button5" />
+    <keyboard-shortcut first-keystroke="alt period" />
+  </action>
+  <action id="GotoImplementation">
+    <keyboard-shortcut first-keystroke="ctrl alt b" />
+    <mouse-shortcut keystroke="control alt button1" />
+    <keyboard-shortcut first-keystroke="alt o" />
+  </action>
+  <action id="GotoNextElementUnderCaretUsage">
+    <keyboard-shortcut first-keystroke="ctrl j" />
+  </action>
+  <action id="GotoPrevElementUnderCaretUsage">
+    <keyboard-shortcut first-keystroke="shift ctrl j" />
+  </action>
+  <action id="Gradle.ExecuteTask">
+    <keyboard-shortcut first-keystroke="alt t" second-keystroke="g" />
+  </action>
+  <action id="InsertLiveTemplate" />
+  <action id="MethodDown">
+    <keyboard-shortcut first-keystroke="alt down" />
+    <keyboard-shortcut first-keystroke="alt close_bracket" />
+  </action>
+  <action id="MethodUp">
+    <keyboard-shortcut first-keystroke="alt up" />
+    <keyboard-shortcut first-keystroke="alt open_bracket" />
+  </action>
+  <action id="NextInlineCompletionSuggestionAction" />
+  <action id="OptimizeImports" />
+  <action id="PrevInlineCompletionSuggestionAction" />
+  <action id="Run">
+    <keyboard-shortcut first-keystroke="shift f10" />
+    <keyboard-shortcut first-keystroke="alt t" second-keystroke="e" />
+  </action>
+  <action id="RunClass">
+    <keyboard-shortcut first-keystroke="shift ctrl f10" />
+    <keyboard-shortcut first-keystroke="alt t" second-keystroke="r" />
+  </action>
+  <action id="SaveAll" />
+  <action id="SmartSelect">
+    <keyboard-shortcut first-keystroke="shift ctrl 7" />
+  </action>
+  <action id="Terminal.DeletePreviousWord" />
+  <action id="ToggleBookmark7" />
+  <action id="TryMe!">
+    <keyboard-shortcut first-keystroke="shift alt p" />
+  </action>
+  <action id="UsageFiltering.WriteAccess" />
+  <action id="UsageGrouping.FlattenModules" />
+  <action id="com.github.maciekwiso.pyfunrun.services.ExecuteAction">
+    <keyboard-shortcut first-keystroke="ctrl alt r" />
+    <keyboard-shortcut first-keystroke="alt t" second-keystroke="f" />
+  </action>
+  <action id="com.mituuz.fuzzier.util.MoveDownAction" />
+</keymap>

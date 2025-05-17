@@ -1,0 +1,45 @@
+<keymap version="1" name="with qmk" parent="$default">
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="ctrl f4" />
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
+  <action id="EditSource">
+    <keyboard-shortcut first-keystroke="f4" />
+    <keyboard-shortcut first-keystroke="ctrl alt o" />
+  </action>
+  <action id="EditorSelectWord">
+    <keyboard-shortcut first-keystroke="ctrl alt w" />
+  </action>
+  <action id="EditorSwapSelectionBoundaries">
+    <keyboard-shortcut first-keystroke="alt p" />
+  </action>
+  <action id="EditorToggleStickySelection">
+    <keyboard-shortcut first-keystroke="alt y" />
+  </action>
+  <action id="ExportToTextFile" />
+  <action id="GotoImplementation">
+    <keyboard-shortcut first-keystroke="ctrl alt b" />
+    <mouse-shortcut keystroke="control alt button1" />
+    <keyboard-shortcut first-keystroke="alt o" />
+  </action>
+  <action id="Kotlin.RunScratch" />
+  <action id="OptimizeImports" />
+  <action id="Rerun">
+    <keyboard-shortcut first-keystroke="ctrl f5" />
+    <keyboard-shortcut first-keystroke="alt r" second-keystroke="t" />
+  </action>
+  <action id="Run">
+    <keyboard-shortcut first-keystroke="shift f10" />
+    <keyboard-shortcut first-keystroke="alt r" second-keystroke="e" />
+  </action>
+  <action id="RunClass">
+    <keyboard-shortcut first-keystroke="shift ctrl f10" />
+    <keyboard-shortcut first-keystroke="alt r" second-keystroke="r" />
+  </action>
+  <action id="SmartSelect">
+    <keyboard-shortcut first-keystroke="ctrl alt w" />
+  </action>
+  <action id="Terminal.DeletePreviousWord" />
+  <action id="UsageFiltering.WriteAccess" />
+  <action id="UsageGrouping.FlattenModules" />
+</keymap>
