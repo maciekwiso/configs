@@ -1,0 +1,42 @@
+let mapleader=" "
+
+map <c-t> <Action>(ActivateTerminalToolWindow)
+map [[ <Action>(MethodUp)
+map ]] <Action>(MethodDown)
+map <leader>r <Action>(RunClass)
+map ge <Action>(GotoNextError)
+map gE <Action>(GotoPreviousError)
+map <leader>v <c-v>
+map <leader>f <Plug>(easymotion-s)
+map <leader><tab> <Action>(Switcher)
+map <leader>u <Action>(FindUsages)
+"map gc <Action>(GotoClass)
+map gd <Action>(GotoImplementation)
+map gt <Action>(GotoTest)
+map gb <Action>(Back)
+map gf <Action>(Forward)
+map <c-s> <Action>(FileStructurePopup)
+inoremap <a-j> <down>
+inoremap <a-k> <up>
+inoremap <a-h> <left>
+inoremap <a-l> <right>
+set ideajoin
+
+set scrolloff=5
+set sidescrolloff=5
+set relativenumber
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+Plug 'easymotion/vim-easymotion'
+set easymotion
