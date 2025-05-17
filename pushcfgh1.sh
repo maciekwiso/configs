@@ -13,7 +13,7 @@ cp -r /mnt/d/Dev/qmk_firmware/keyboards/keychron/k15_max/ansi_encoder/white/keym
 
 #intellij
 rm -r ${me}/intellij/*
-cp -r /mnt/c/Users/macie/AppData/Roaming/JetBrains/IdeaIC2024.3/keymaps ${me}/intellij/*
+cp -r /mnt/c/Users/macie/AppData/Roaming/JetBrains/IdeaIC2024.3/keymaps ${me}/intellij
 
 #push to git
 cd $me
