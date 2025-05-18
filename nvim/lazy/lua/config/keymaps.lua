@@ -19,3 +19,15 @@ map({ "n", "v" }, "<c-t>", ":term<CR>i", {})
 map({ "t" }, "<c-n>", "<C-\\><C-n>", {})
 map({ "t" }, "<s-h>", "<C-\\><C-n>", {})
 map({ "t" }, "<s-l>", "<C-\\><C-n>", {})
+vim.api.nvim_set_keymap(
+  "n",
+  "<home>",
+  "col('.') == match(getline('.'),'\\S')+1 ? '0' : '^'",
+  { expr = true, noremap = true }
+)
+vim.api.nvim_set_keymap(
+  "i",
+  "<home>",
+  "col('.') == match(getline('.'),'\\S')+1 ? '<c-o>0' : '<c-o>^'",
+  { expr = true, noremap = true }
+)

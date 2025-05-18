@@ -22,6 +22,7 @@
     <mouse-shortcut keystroke="control alt button1" />
     <keyboard-shortcut first-keystroke="alt o" />
   </action>
+  <action id="InsertLiveTemplate" />
   <action id="Kotlin.RunScratch" />
   <action id="OptimizeImports" />
   <action id="Rerun">
@@ -42,4 +43,5 @@
   <action id="Terminal.DeletePreviousWord" />
   <action id="UsageFiltering.WriteAccess" />
   <action id="UsageGrouping.FlattenModules" />
+  <action id="com.mituuz.fuzzier.util.MoveDownAction" />
 </keymap>

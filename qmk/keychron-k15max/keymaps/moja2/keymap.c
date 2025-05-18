@@ -230,7 +230,11 @@ const uint16_t PROGMEM enter_combo5[]   = {HM2_F, HM2_D, COMBO_END};
 const uint16_t PROGMEM alttab_combo1[]  = {HM_A, HM_S, COMBO_END};
 const uint16_t PROGMEM ctrltab_combo1[] = {HM_D, HM_S, COMBO_END};
 const uint16_t PROGMEM altstab_combo1[] = {HM_S, HM_F, COMBO_END};
+const uint16_t PROGMEM home_combo1[] =    {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM end_combo1[] =     {KC_L, HM_SCLN, COMBO_END};
 combo_t key_combos[] = {
+	COMBO(home_combo1, KC_HOME),
+	COMBO(end_combo1, KC_END),
     COMBO(enter_combo4, KC_ENT),
     COMBO(enter_combo5, KC_ENT),
     COMBO(enter_combo1, KC_ESC),
