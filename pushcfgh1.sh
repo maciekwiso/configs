@@ -16,6 +16,10 @@ rm -r ${me}/intellij/keymaps/*
 cp -r /mnt/c/Users/macie/AppData/Roaming/JetBrains/IdeaIC2024.3/keymaps ${me}/intellij
 cp /mnt/c/Users/macie/.ideavimrc ${me}/intellij
 
+#wsl
+rm -r ${me}/wsl/*
+cp ~/.bashrc ${me}/wsl
+
 #push to git
 cd $me
 git add .
