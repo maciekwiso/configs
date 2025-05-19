@@ -52,6 +52,10 @@ require("lazy").setup({
   },
 })
 
-require("java").setup()
+require("java").setup({
+  jdk = {
+    auto_install = false,
+  },
+})
 
 require("lspconfig").jdtls.setup({})
