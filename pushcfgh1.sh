@@ -3,9 +3,10 @@
 me=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 #nvim lazy
+lazyname='lazy-java'
 cd ~/.config/nvim/
-rm -r ${me}/nvim/lazy/*
-cp -r init.lua lazy-lock.json lazyvim.json stylua.toml lua ${me}/nvim/lazy
+rm -fr ${me}/nvim/${lazyname}/*
+cp -r init.lua lazy-lock.json lazyvim.json stylua.toml lua ${me}/nvim/${lazyname}
 
 #qmk
 rm -r ${me}/qmk/keychron-k15max/*
@@ -17,7 +18,7 @@ cp -r /mnt/c/Users/macie/AppData/Roaming/JetBrains/IdeaIC2024.3/keymaps ${me}/in
 cp /mnt/c/Users/macie/.ideavimrc ${me}/intellij
 
 #wsl
-rm -r ${me}/wsl/*
+rm -rf ${me}/wsl/*
 cp ~/.bashrc ${me}/wsl
 
 #push to git
