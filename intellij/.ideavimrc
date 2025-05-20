@@ -21,7 +21,7 @@ map <leader>v <c-v>
 map <leader>f <Plug>(easymotion-s)
 map <leader><tab> <Action>(Switcher)
 map <leader>u <Action>(FindUsages)
-"map gc <Action>(GotoClass)
+map <leader>n <Action>(GotoClass)
 map gd <Action>(GotoDeclaration)
 map gi <Action>(GotoImplementation)
 map gt <Action>(GotoTest)

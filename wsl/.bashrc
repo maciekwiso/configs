@@ -99,3 +99,5 @@ fi
 export PATH="/usr/lib/jvm/java-1.21.0-openjdk-amd64/bin:/opt/nvim-linux-x86_64/bin:$PATH:/usr/local/go/bin"
 export JAVA_HOME="/usr/lib/jvm/java-1.21.0-openjdk-amd64"
 alias pucfg=~/workspace/configs/pushcfgh1.sh
+alias v=nvim
+alias vv='nvim -c ":term" -c startinsert'
