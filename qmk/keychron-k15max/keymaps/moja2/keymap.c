@@ -254,7 +254,7 @@ void tap_dance_b2(tap_dance_state_t *state, void *user_data) {
         tap_code16(KC_ENT);
     } else if (state->count == 2) {
         tap_code16(LCA(KC_END));
-		tap_code_delay(KC_NO, 2000);
+		tap_code_delay(KC_NO, 1500);
 		tap_code16(KC_ENT);
     } else {
         tap_code16(KC_B);

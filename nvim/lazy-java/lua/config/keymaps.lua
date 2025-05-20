@@ -19,6 +19,7 @@ map({ "n", "v" }, "<c-t>", ":term<CR>i", {})
 map({ "t" }, "<c-n>", "<C-\\><C-n>", {})
 map({ "t" }, "<s-h>", "<C-\\><C-n>", {})
 map({ "t" }, "<s-l>", "<C-\\><C-n>", {})
+map({ "n" }, "<2-LeftMouse>", "yiW", {})
 vim.api.nvim_set_keymap(
   "n",
   "<home>",
