@@ -1,5 +1,14 @@
 let mapleader=" "
 set clipboard+=unnamed
+vnoremap d "_d
+vnoremap c "_c
+vnoremap C "_C
+vnoremap D "_D
+nnoremap d "_d
+noremap c "_c
+noremap C "_C
+noremap D "_D
+noremap x "_x
 
 map <c-t> <Action>(ActivateTerminalToolWindow)
 map <leader>e <Action>(ActivateProjectToolWindow)
