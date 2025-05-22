@@ -3,7 +3,7 @@
 me=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 #nvim lazy
-lazyname='lazy-java'
+lazyname='lazy'
 cd ~/.config/nvim/
 rm -fr ${me}/nvim/${lazyname}/*
 cp -r init.lua lazy-lock.json lazyvim.json stylua.toml lua ${me}/nvim/${lazyname}
