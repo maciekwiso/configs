@@ -96,7 +96,8 @@ fi
 #if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 #    . /etc/bash_completion
 #fi
-export PATH="/usr/lib/jvm/java-1.21.0-openjdk-amd64/bin:/opt/nvim-linux-x86_64/bin:$PATH:/usr/local/go/bin"
+#export PATH="/usr/lib/jvm/java-1.21.0-openjdk-amd64/bin:/opt/nvim-linux-x86_64/bin:${PATH}:/usr/local/go/bin"
+export PATH="/usr/lib/jvm/java-1.21.0-openjdk-amd64/bin:/opt/nvim-linux-x86_64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/Users/macie/AppData/Local/Microsoft/WindowsApps"
 export JAVA_HOME="/usr/lib/jvm/java-1.21.0-openjdk-amd64"
 alias pucfg=~/workspace/configs/pushcfgh1.sh
 alias v=nvim
