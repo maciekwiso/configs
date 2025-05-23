@@ -9,6 +9,7 @@ noremap c "_c
 noremap C "_C
 noremap D "_D
 noremap x "_x
+noremap Y y$
 
 map <c-t> <Action>(ActivateTerminalToolWindow)
 map <leader>e <Action>(ActivateProjectToolWindow)

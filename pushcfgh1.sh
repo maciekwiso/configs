@@ -3,10 +3,10 @@
 me=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 #nvim lazy
-lazyname='lazy'
+lazyname='lazy-java2'
 cd ~/.config/nvim/
 rm -fr ${me}/nvim/${lazyname}/*
-cp -r init.lua lazy-lock.json lazyvim.json stylua.toml lua ${me}/nvim/${lazyname}
+cp -r init.lua lazy-lock.json lazyvim.json stylua.toml lua ftplugin ${me}/nvim/${lazyname}
 
 #qmk
 rm -r ${me}/qmk/keychron-k15max/*
