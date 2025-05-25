@@ -5,6 +5,10 @@ vim.g.mapleader = " "
 if vim.g.vscode then
   vim.cmd("nmap <leader>v <C-v>")
 end
+local del = vim.keymap.del
+del("n", "<leader>l")
+del("n", "<leader>L")
+del("n", "<leader>K")
 local map = vim.keymap.set
 map({ "i" }, "<C-z>", "<esc>ui", {})
 map({ "i" }, "<C-H>", "<C-W>", {})
@@ -12,7 +16,7 @@ map({ "n" }, "<c-a>", "ggVG", {})
 map(
   { "n" },
   "<leader>bc",
-  "ggVGy<cmd>:enew<CR><cmd>:wincmd k<CR>p",
+  "ggVGy<cmd>:enew<CR><cmd>:wincmd k<CR>P",
   { ["desc"] = "Copy buffer to new buffer and window" }
 )
 map({ "n" }, "x", '"_x', {})
