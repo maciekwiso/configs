@@ -9,7 +9,12 @@ local map = vim.keymap.set
 map({ "i" }, "<C-z>", "<esc>ui", {})
 map({ "i" }, "<C-H>", "<C-W>", {})
 map({ "n" }, "<c-a>", "ggVG", {})
-map({ "n" }, "<leader>bc", "ggVGy<cmd>:enew<CR>p", { ["desc"] = "Copy buffer to new buffer and window" })
+map(
+  { "n" },
+  "<leader>bc",
+  "ggVGy<cmd>:enew<CR><cmd>:wincmd k<CR>p",
+  { ["desc"] = "Copy buffer to new buffer and window" }
+)
 map({ "n" }, "x", '"_x', {})
 map({ "n", "v" }, "d", '"_d', {})
 map({ "n", "v" }, "c", '"_c', {})
