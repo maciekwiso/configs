@@ -16,7 +16,7 @@ map({ "n" }, "<c-a>", "ggVG", {})
 map(
   { "n" },
   "<leader>bc",
-  "ggVGy<cmd>:enew<CR><cmd>:wincmd k<CR>P",
+  "ggVGy<cmd>:wincmd k<CR><cmd>:enew<CR>P",
   { ["desc"] = "Copy buffer to new buffer and window" }
 )
 map({ "n" }, "x", '"_x', {})
@@ -30,6 +30,7 @@ map({ "n", "v" }, "<c-x>", "x", {})
 map({ "n", "v" }, "<c-c>", "y", {})
 map({ "n", "v" }, "<c-t>", ":term<CR>i", {})
 map({ "t" }, "<c-n>", "<C-\\><C-n>", {})
+map({ "t" }, "<esc>", "<C-\\><C-n>", {})
 vim.api.nvim_set_keymap(
   "n",
   "<home>",
