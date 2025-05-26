@@ -42,3 +42,6 @@ vim.api.nvim_set_keymap(
   "col('.') == match(getline('.'),'\\S')+1 ? '<c-o>0' : '<c-o>^'",
   { expr = true, noremap = true }
 )
+vim.keymap.set("n", "<leader>gw", function()
+  vim.cmd("windo diffthis")
+end, { noremap = true, desc = "Git diff (w)indows" })
