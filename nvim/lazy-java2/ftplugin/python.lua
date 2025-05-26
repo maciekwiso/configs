@@ -28,7 +28,13 @@ local function run_curr_python_file()
   if fun_name == "" then
     return
   end
-  Snacks.terminal.open("python3 " .. file_name .. " " .. fun_name, {
+  if MYPYTERM ~= nil then
+    local termtext = MYPYTERM:text(1, 10000)
+    if string.find(termtext, "Process exited") ~= nil then
+      MYPYTERM:destroy()
+    end
+  end
+  MYPYTERM = Snacks.terminal.open("python3 " .. file_name .. " " .. fun_name, {
     interactive = false,
     win = {
       split = "below",
