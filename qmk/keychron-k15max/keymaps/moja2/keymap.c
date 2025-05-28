@@ -34,18 +34,18 @@ enum {
 #define HM_GRV LT(WIN_BASE,KC_GRV)
 #define HM_Q LT(MOD1,KC_Q)
 #define HM_A LT(MOD2,KC_A)
-#define HM_R LCTL_T(KC_R)
+#define HM_R KC_R
 #define HM_C LT(WIN_BASE,KC_C)
 #define HM_V LT(WIN_BASE,KC_V)
 #define HM_Z LT(WIN_BASE,KC_Z)
 #define HM_X LT(WIN_BASE,KC_X)
-#define HM_S LALT_T(KC_S)
+#define HM_S LSFT_T(KC_S)
 #define HM_D LCTL_T(KC_D)
-#define HM_F LSFT_T(KC_F)
-#define HM_G LT(WIN_BASE,KC_G)
+#define HM_F LALT_T(KC_F)
+#define HM_G KC_G
 #define HM_E LT(WIN_BASE,KC_E)
-#define HM_W LSFT_T(KC_W)
-#define HM_T LT(WIN_BASE,KC_T)
+#define HM_W KC_W
+#define HM_T KC_T
 #define HM_B2 TD(TD_B2)
 
 #define HM_J KC_J
@@ -54,7 +54,7 @@ enum {
 #define HM_M LCTL_T(KC_M)
 #define HM_N KC_N
 #define HCOM LALT_T(KC_COMM)
-#define HM_SCLN LSFT_T(KC_SCLN)
+#define HM_SCLN RALT_T(KC_SCLN)
 #define HM_M1 LT(WIN_BASE,KC_F5)
 #define HM_M3 LSG(KC_LEFT)
 
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_FILE,   KC_TAB,   HM_Q,     HM_W,     HM_E,     HM_R,     HM_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_END,
         HM_M3,     KC_ESC,   HM_A,     HM_S,     HM_D,     HM_F,     HM_G,     KC_H,     HM_J,     HM_K,     HM_L,     HM_SCLN,  KC_QUOT,            KC_ENT,             KC_HOME,
         G(KC_UP),  KC_LSFT,            HM_Z,     HM_X,     HM_C,     HM_V,     KC_B,     HM_B2,    HM_N,     HM_M,     HCOM,     KC_DOT,   KC_SLSH,  TG(MOD1),   KC_UP,
-        G(KC_DOWN),KC_LCTL,  KC_LWIN,            KC_BSPC,  KC_SPC,   KC_DEL,                       KC_ENT,             MO(WIN_FN),KC_RALT,             KC_LEFT,  KC_DOWN,  KC_RGHT),
+        G(KC_DOWN),KC_LCTL,  KC_LWIN,            KC_BSPC,  KC_SPC,   KC_DEL,                       KC_ENT,             KC_RSFT,  MO(WIN_FN),          KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [WIN_FN] = LAYOUT_ansi_90(
         BL_TOGG,   _______,  BL_DOWN,  BL_UP,    KC_TASK,  KC_FILE,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,            _______,
@@ -197,16 +197,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(KC_INS);
                 return false;
             }
-        case LT(WIN_BASE,KC_G):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(MEH(KC_G));
-                return false;
-            }
-        case LT(WIN_BASE,KC_T):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(MEH(KC_T));
-                return false;
-            }
 		case LT(WIN_BASE,KC_F5):
             if (!record->tap.count && record->event.pressed) {
                 tap_code16(A(KC_F4));
@@ -254,7 +244,7 @@ void tap_dance_b2(tap_dance_state_t *state, void *user_data) {
         tap_code16(KC_ENT);
     } else if (state->count == 2) {
         tap_code16(LCA(KC_END));
-		tap_code_delay(KC_NO, 1500);
+		tap_code_delay(KC_NO, 1200);
 		tap_code16(KC_ENT);
     } else {
         tap_code16(KC_B);
