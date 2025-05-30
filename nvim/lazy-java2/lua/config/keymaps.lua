@@ -13,6 +13,9 @@ local map = vim.keymap.set
 map({ "i" }, "<C-z>", "<esc>ui", {})
 map({ "i" }, "<C-H>", "<C-W>", {})
 map({ "n" }, "<c-a>", "ggVG", {})
+map({ "n" }, "<leader>bg", "A<CR>", { ["desc"] = "New line below" })
+map({ "n" }, "<leader>bf", "<Cmd>BufferLineCycleNext<CR>", { ["desc"] = "Next buffer" })
+map({ "n" }, "<leader>ba", "<Cmd>BufferLineCyclePrev<CR>", { ["desc"] = "Previous buffer" })
 map(
   { "n" },
   "<leader>bc",
@@ -27,10 +30,14 @@ map({ "n", "v" }, "C", '"_C', {})
 map({ "n", "v" }, "<leader>v", "<c-v>", { ["desc"] = "Column visual mode" })
 map({ "n", "v" }, "<c-z>", "u", {})
 map({ "n", "v" }, "<c-x>", "x", {})
-map({ "n", "v" }, "<c-c>", "y", {})
+map({ "n" }, "<2-LeftMouse>", "yiWi", {})
+map({ "n" }, "<c-c>", "y$", {})
+map({ "v" }, "<c-c>", "y", {})
 map({ "n", "v" }, "<c-t>", ":term<CR>i", {})
 map({ "t" }, "<c-n>", "<C-\\><C-n>", {})
 map({ "t" }, "<esc>", "<C-\\><C-n>", {})
+map({ "t" }, "<c-a>", "<C-\\><C-n>k_yiWi", {})
+map({ "t" }, "<c-s>", "<C-\\><C-n>kyyi", {})
 vim.api.nvim_set_keymap(
   "n",
   "<home>",
