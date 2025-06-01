@@ -21,7 +21,7 @@ local function get_current_function_name()
   return vim.treesitter.get_node_text(expr:child(1), 0)
 end
 
-local function run_curr_python_file()
+local function run_curr_python_fun()
   -- Get file name in the current buffer
   local file_name = vim.api.nvim_buf_get_name(0)
   local fun_name = get_current_function_name()
@@ -34,23 +34,25 @@ local function run_curr_python_file()
       MYPYTERM:destroy()
     end
   end
-  MYPYTERM = Snacks.terminal.open("python3 " .. file_name .. " " .. fun_name, {
-    interactive = false,
-    win = {
-      split = "below",
-      height = 0.3,
-      position = "bottom",
-      focusable = true,
-      enter = false,
-      show = true,
-      hide = false,
-    },
-  })
+  local cmd_ending = file_name .. " " .. fun_name
+  local res_file_path = "/tmp/" .. string.gsub(cmd_ending, " ", "_"):gsub("/", "")
+  MYPYTERM =
+    Snacks.terminal.open("echo " .. res_file_path .. "; python3 -u " .. cmd_ending .. " | tee " .. res_file_path, {
+      interactive = false,
+      win = {
+        split = "below",
+        height = 0.4,
+        position = "bottom",
+        focusable = true,
+        enter = false,
+        show = true,
+        hide = false,
+      },
+    })
 end
-
 map(
   { "n" },
   "<leader>dy",
   "",
-  { ["desc"] = "Run Python runnable function", buffer = true, callback = run_curr_python_file }
+  { ["desc"] = "Run Python runnable function", buffer = true, callback = run_curr_python_fun }
 )

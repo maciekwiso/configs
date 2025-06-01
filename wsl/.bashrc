@@ -102,3 +102,6 @@ export JAVA_HOME="/usr/lib/jvm/java-1.21.0-openjdk-amd64"
 alias pucfg=~/workspace/configs/pushcfgh1.sh
 alias v=nvim
 alias vv='nvim -c ":term" -c startinsert'
+
+# Created by `pipx` on 2025-05-30 19:29:26
+export PATH="$PATH:/root/.local/bin"
