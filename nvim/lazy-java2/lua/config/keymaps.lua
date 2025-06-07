@@ -6,14 +6,16 @@ if vim.g.vscode then
   vim.cmd("nmap <leader>v <C-v>")
 end
 local del = vim.keymap.del
-del("n", "<leader>l")
-del("n", "<leader>L")
+-- del("n", "<leader>l")
+-- del("n", "<leader>L")
 del("n", "<leader>K")
 local map = vim.keymap.set
 map({ "i" }, "<C-z>", "<esc>ui", {})
 map({ "i" }, "<C-H>", "<C-W>", {})
+map({ "n" }, "<leader>ctt", "ciwTrue<esc>", {})
+map({ "n" }, "<leader>ctf", "ciwFalse<esc>", {})
 map({ "n" }, "<c-a>", "ggVG", {})
-map({ "n" }, "<leader>bg", "A<CR>", { ["desc"] = "New line below" })
+map({ "n" }, "<leader>bg", "A<CR><esc>", { ["desc"] = "New line below" })
 map({ "n" }, "<leader>bf", "<Cmd>BufferLineCycleNext<CR>", { ["desc"] = "Next buffer" })
 map({ "n" }, "<leader>ba", "<Cmd>BufferLineCyclePrev<CR>", { ["desc"] = "Previous buffer" })
 map(

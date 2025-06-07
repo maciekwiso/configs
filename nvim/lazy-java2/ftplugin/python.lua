@@ -28,27 +28,42 @@ local function run_curr_python_fun()
   if fun_name == "" then
     return
   end
+
   if MYPYTERM ~= nil then
-    local termtext = MYPYTERM:text(1, 10000)
-    if string.find(termtext, "Process exited") ~= nil then
-      MYPYTERM:destroy()
+    local lines = MYPYTERM:lines(2)
+    local value = ""
+    for i = #lines, 1, -1 do
+      value = lines[i]
+      if value ~= "" then
+        -- print(i .. ": " .. value)
+        if value:find("^root@") then
+          local chan = vim.bo[MYPYTERM.buf].channel
+          vim.defer_fn(function()
+            vim.fn.chansend(chan, { "exit 0\r\n" })
+          end, 100)
+        end
+        break
+      end
     end
   end
+  MYPYTERM = Snacks.terminal.open(nil, {
+    auto_insert = false,
+    win = {
+      split = "below",
+      height = 0.4,
+      position = "bottom",
+      focusable = true,
+      enter = false,
+      show = true,
+      hide = false,
+    },
+  })
+  local chan = vim.bo[MYPYTERM.buf].channel
   local cmd_ending = file_name .. " " .. fun_name
   local res_file_path = "/tmp/" .. string.gsub(cmd_ending, " ", "_"):gsub("/", "")
-  MYPYTERM =
-    Snacks.terminal.open("echo " .. res_file_path .. "; python3 -u " .. cmd_ending .. " | tee " .. res_file_path, {
-      interactive = false,
-      win = {
-        split = "below",
-        height = 0.4,
-        position = "bottom",
-        focusable = true,
-        enter = false,
-        show = true,
-        hide = false,
-      },
-    })
+  vim.defer_fn(function()
+    vim.fn.chansend(chan, { "python3 -u " .. cmd_ending .. " | tee " .. res_file_path .. "\r\n" })
+  end, 100)
 end
 map(
   { "n" },
