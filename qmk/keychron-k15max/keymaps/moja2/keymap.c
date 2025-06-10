@@ -51,7 +51,7 @@ enum {
 #define HM_J KC_J
 #define HM_K KC_K
 #define HM_L KC_L
-#define HM_M LCTL_T(KC_M)
+#define HM_M KC_M
 #define HM_N KC_N
 #define HCOM LALT_T(KC_COMM)
 #define HM_SCLN RALT_T(KC_SCLN)
@@ -81,12 +81,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  _______,            _______,  _______,  _______,                      _______,            _______,  _______,            _______,  _______,  _______),
 
     [WIN_BASE] = LAYOUT_ansi_90(
-        KC_MUTE,   KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_INS,             KC_DEL,
-        HM_M1,     HM_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,            KC_PGUP,
-        KC_FILE,   KC_TAB,   HM_Q,     HM_W,     HM_E,     HM_R,     HM_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_END,
-        HM_M3,     KC_ESC,   HM_A,     HM_S,     HM_D,     HM_F,     HM_G,     KC_H,     HM_J,     HM_K,     HM_L,     HM_SCLN,  KC_QUOT,            KC_ENT,             KC_HOME,
+        KC_MUTE,   KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_INS,             KC_PGUP,
+        HM_M1,     HM_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,            KC_PGDN,
+        KC_FILE,   KC_TAB,   HM_Q,     HM_W,     HM_E,     HM_R,     HM_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_HOME,
+        HM_M3,     KC_ESC,   HM_A,     HM_S,     HM_D,     HM_F,     HM_G,     KC_H,     HM_J,     HM_K,     HM_L,     HM_SCLN,  KC_QUOT,            KC_ENT,             KC_END,
         G(KC_UP),  KC_LSFT,            HM_Z,     HM_X,     HM_C,     HM_V,     KC_B,     HM_B2,    HM_N,     HM_M,     HCOM,     KC_DOT,   KC_SLSH,  TG(MOD1),   KC_UP,
-        G(KC_DOWN),KC_LCTL,  KC_LWIN,            KC_BSPC,  KC_SPC,   KC_DEL,                       KC_ENT,             KC_RSFT,  MO(WIN_FN),          KC_LEFT,  KC_DOWN,  KC_RGHT),
+        G(KC_DOWN),KC_LCTL,  KC_LWIN,            KC_BSPC,  KC_SPC,   KC_DEL,                                    KC_RSFT,  MO(WIN_FN),KC_LCTL,          KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [WIN_FN] = LAYOUT_ansi_90(
         BL_TOGG,   _______,  BL_DOWN,  BL_UP,    KC_TASK,  KC_FILE,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,            _______,
@@ -214,6 +214,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 const uint16_t PROGMEM enter_combo1[]   = {HM_J, HM_K, COMBO_END};
 const uint16_t PROGMEM enter_combo2[]   = {KC_UP, KC_DOWN, COMBO_END};
+const uint16_t PROGMEM enter_combo3[]   = {HM_J, HM_L, COMBO_END};
 const uint16_t PROGMEM enter_combo6[]   = {KC_RIGHT, KC_DOWN, COMBO_END};
 const uint16_t PROGMEM enter_combo4[]   = {HM_F, HM_D, COMBO_END};
 const uint16_t PROGMEM enter_combo5[]   = {HM2_F, HM2_D, COMBO_END};
@@ -227,9 +228,10 @@ combo_t key_combos[] = {
 	COMBO(end_combo1, KC_END),
     COMBO(enter_combo4, KC_ENT),
     COMBO(enter_combo5, KC_ENT),
-    COMBO(enter_combo1, KC_ESC),
-    COMBO(enter_combo2, KC_ESC),
+    COMBO(enter_combo1, KC_ENT),
+    COMBO(enter_combo2, KC_ENT),
     COMBO(enter_combo6, KC_ENT),
+	COMBO(enter_combo3, KC_ESC),
 	COMBO(alttab_combo1, A(KC_TAB)),
 	COMBO(ctrltab_combo1, C(KC_TAB)),
 	COMBO(altstab_combo1, C(S(KC_TAB))),
