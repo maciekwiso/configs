@@ -34,7 +34,7 @@ enum {
 #define HM_GRV LT(WIN_BASE,KC_GRV)
 #define HM_Q LT(MOD1,KC_Q)
 #define HM_A LT(MOD2,KC_A)
-#define HM_R KC_R
+#define HM_R LT(WIN_BASE,KC_R)
 #define HM_C LT(WIN_BASE,KC_C)
 #define HM_V LT(WIN_BASE,KC_V)
 #define HM_Z LT(WIN_BASE,KC_Z)
@@ -43,7 +43,7 @@ enum {
 #define HM_D LCTL_T(KC_D)
 #define HM_F LALT_T(KC_F)
 #define HM_G KC_G
-#define HM_E LT(WIN_BASE,KC_E)
+#define HM_E KC_E
 #define HM_W KC_W
 #define HM_T KC_T
 #define HM_B2 TD(TD_B2)
@@ -192,7 +192,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
-        case LT(WIN_BASE,KC_E):
+        case LT(WIN_BASE,KC_R):
             if (!record->tap.count && record->event.pressed) {
                 tap_code16(KC_INS);
                 return false;
