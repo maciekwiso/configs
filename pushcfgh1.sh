@@ -21,6 +21,9 @@ cp /mnt/c/Users/macie/.ideavimrc ${me}/intellij
 rm -rf ${me}/wsl/*
 cp ~/.bashrc ${me}/wsl
 
+#autohotkey
+cp /mnt/c/Users/macie/Documents/AutoHotkey/* ${me}/autohotkey
+
 #push to git
 cd $me
 git add .
