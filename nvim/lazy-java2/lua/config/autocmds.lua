@@ -25,3 +25,12 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = "*",
   callback = search_bufenter,
 })
+
+local function onbufwrite()
+  -- print("po write")
+  -- require("jdtls").compile("incremental")
+end
+
+vim.api.nvim_create_autocmd({ "BufWrite" }, {
+  callback = onbufwrite,
+})

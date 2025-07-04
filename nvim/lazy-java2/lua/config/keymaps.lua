@@ -55,3 +55,15 @@ vim.api.nvim_set_keymap(
 vim.keymap.set("n", "<leader>gw", function()
   vim.cmd("windo diffthis")
 end, { noremap = true, desc = "Git diff (w)indows" })
+local function as_single_line()
+  vim.cmd.normal({ "y", bang = true })
+  local selection = vim.fn.getreg("+")
+  local single_line = string.gsub(selection, "\n", "")
+  vim.fn.setreg("+", single_line)
+end
+map({ "v" }, "<leader>y", "", { callback = as_single_line, desc = "Copy as a single line" })
+local function copy_resources_to_bin()
+  os.execute("cp src/main/resources/* bin/main")
+  os.execute("cp src/test/resources/* bin/test")
+end
+map({ "n" }, "<leader>ddr", "", { callback = copy_resources_to_bin, desc = "Copy resources to bin" })
