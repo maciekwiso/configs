@@ -108,9 +108,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MOD2] = LAYOUT_ansi_90(
         XXXXXXX,   XXXXXXX,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   KC_F12,   XXXXXXX,            XXXXXXX,
         XXXXXXX,   XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,      KC_8,     KC_9,    KC_0,     XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,
-        XXXXXXX,   XXXXXXX,  XXXXXXX,  KC_5,     KC_6,     KC_7,     KC_8,     XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,
-        XXXXXXX,   XXXXXXX,  XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,      KC_7,     KC_8,    KC_9,     KC_0,               XXXXXXX,            XXXXXXX,
-        XXXXXXX,   _______,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  XXXXXXX,  XXXXXXX,   XXXXXXX,  _______, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    _______,
+        XXXXXXX,   XXXXXXX,  XXXXXXX,  G(KC_5),  G(KC_6),  G(KC_7),  G(KC_8),  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,
+        XXXXXXX,   XXXXXXX,  XXXXXXX,  G(KC_1),  G(KC_2),  G(KC_3),  G(KC_4),  G(KC_5),  G(KC_6),   G(KC_7),  G(KC_8), G(KC_9),  G(KC_0),            XXXXXXX,            XXXXXXX,
+        XXXXXXX,   _______,            XXXXXXX,A(KC_TAB),C(KC_TAB),C(S(KC_TAB)),XXXXXXX, XXXXXXX,   XXXXXXX,  _______, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    _______,
         XXXXXXX,   _______,  _______,            _______,  _______,  _______,                       _______,              _______,  _______,            _______,    _______,  _______),
 		
     [GAME1] = LAYOUT_ansi_90(
@@ -203,12 +203,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(A(KC_F4));
                 return false;
             }
-		case LT(MOD2,KC_A):
-            if (!record->tap.count && record->event.pressed) {
-				register_mods(MOD_MASK_GUI);
-            } else if (!record->event.pressed) {
-				unregister_mods(MOD_MASK_GUI);
-			}
     }
     return true;
 }
@@ -217,19 +211,13 @@ const uint16_t PROGMEM enter_combo1[]   = {HM_J, HM_K, COMBO_END};
 const uint16_t PROGMEM enter_combo2[]   = {KC_UP, KC_DOWN, COMBO_END};
 const uint16_t PROGMEM enter_combo3[]   = {KC_UP, KC_RIGHT, COMBO_END};
 const uint16_t PROGMEM enter_combo6[]   = {KC_RIGHT, KC_DOWN, COMBO_END};
-const uint16_t PROGMEM enter_combo5[]   = {HM2_F, HM2_D, COMBO_END};
-const uint16_t PROGMEM alttab_combo1[]  = {KC_EQUAL, S(KC_1), COMBO_END};
-const uint16_t PROGMEM ctrltab_combo1[] = {S(KC_1),  HM2_D, COMBO_END};
-const uint16_t PROGMEM altstab_combo1[] = {KC_EQUAL, HM2_D, COMBO_END};
+const uint16_t PROGMEM enter_combo5[]   = {G(KC_2),  G(KC_3), COMBO_END};
 combo_t key_combos[] = {
     COMBO(enter_combo5, KC_ENT),
     COMBO(enter_combo1, KC_ENT),
     COMBO(enter_combo2, KC_ENT),
     COMBO(enter_combo6, KC_ENT),
 	COMBO(enter_combo3, KC_ESC),
-	COMBO(alttab_combo1, A(KC_TAB)),
-	COMBO(ctrltab_combo1, C(KC_TAB)),
-	COMBO(altstab_combo1, C(S(KC_TAB))),
 };
 
 void tap_dance_b2(tap_dance_state_t *state, void *user_data) {
