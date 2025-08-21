@@ -100,17 +100,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MOD1] = LAYOUT_ansi_90(
         _______,   _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   TO(GAME1),_______,            _______,
         _______,   _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   KC_F12,   _______,            _______,
-        _______,   _______,  _______,  KC_HOME,  KC_UP,    KC_END,   KC_PGUP,  MS_UP,    KC_7,      KC_8,     KC_9,    XXXXXXX,  _______,  _______,  _______,            _______,
-        _______,   KC_CAPS,  _______,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,  MS_LEFT,  KC_4,      KC_5,     KC_6,    MS_RGHT,  _______,            _______,            _______,
-        _______,   _______,            MS_BTN3,  MS_BTN1,  MS_BTN2,  MS_WHLU,  MS_WHLD,  XXXXXXX,   MS_DOWN,  KC_1,    KC_2,     KC_3,     XXXXXXX,  _______,    _______,
+        _______,   _______,  _______,  A(KC_TAB),KC_UP,C(S(KC_TAB)), C(KC_TAB),XXXXXXX,  KC_7,      KC_8,     KC_9,    XXXXXXX,  _______,  _______,  _______,            _______,
+        _______,   KC_CAPS,  _______,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,  XXXXXXX,  KC_4,      KC_5,     KC_6,    XXXXXXX,  _______,            _______,            _______,
+        _______,   _______,            XXXXXXX,  XXXXXXX,  KC_HOME,  KC_END,   XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_1,    KC_2,     KC_3,     XXXXXXX,  _______,    _______,
         _______,   _______,  _______,            _______,  _______,  _______,                       KC_0,              XXXXXXX,  _______,            _______,    _______,  _______),
         
     [MOD2] = LAYOUT_ansi_90(
         XXXXXXX,   XXXXXXX,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   KC_F12,   XXXXXXX,            XXXXXXX,
         XXXXXXX,   XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,      KC_8,     KC_9,    KC_0,     XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,
-        XXXXXXX,   XXXXXXX,  XXXXXXX,  G(KC_5),  G(KC_6),  G(KC_7),  G(KC_8),  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,
-        XXXXXXX,   XXXXXXX,  XXXXXXX,  G(KC_1),  G(KC_2),  G(KC_3),  G(KC_4),  G(KC_5),  G(KC_6),   G(KC_7),  G(KC_8), G(KC_9),  G(KC_0),            XXXXXXX,            XXXXXXX,
-        XXXXXXX,   _______,            XXXXXXX,A(KC_TAB),C(KC_TAB),C(S(KC_TAB)),XXXXXXX, XXXXXXX,   XXXXXXX,  _______, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    _______,
+        XXXXXXX,   XXXXXXX,  XXXXXXX,  KC_5,     KC_6,     KC_7,     KC_8,     XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,
+        XXXXXXX,   XXXXXXX,  XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,      KC_7,     KC_8,    KC_9,     KC_0,               XXXXXXX,            XXXXXXX,
+        XXXXXXX,   _______,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  XXXXXXX,  XXXXXXX,   XXXXXXX,  _______, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    _______,
         XXXXXXX,   _______,  _______,            _______,  _______,  _______,                       _______,              _______,  _______,            _______,    _______,  _______),
 		
     [GAME1] = LAYOUT_ansi_90(
@@ -203,6 +203,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(A(KC_F4));
                 return false;
             }
+		case LT(MOD2,KC_A):
+            if (!record->tap.count && record->event.pressed) {
+				register_mods(MOD_MASK_GUI);
+            } else if (!record->event.pressed) {
+				unregister_mods(MOD_MASK_GUI);
+			}
     }
     return true;
 }
@@ -211,7 +217,7 @@ const uint16_t PROGMEM enter_combo1[]   = {HM_J, HM_K, COMBO_END};
 const uint16_t PROGMEM enter_combo2[]   = {KC_UP, KC_DOWN, COMBO_END};
 const uint16_t PROGMEM enter_combo3[]   = {KC_UP, KC_RIGHT, COMBO_END};
 const uint16_t PROGMEM enter_combo6[]   = {KC_RIGHT, KC_DOWN, COMBO_END};
-const uint16_t PROGMEM enter_combo5[]   = {G(KC_2),  G(KC_3), COMBO_END};
+const uint16_t PROGMEM enter_combo5[]   = {HM2_F, HM2_D, COMBO_END};
 combo_t key_combos[] = {
     COMBO(enter_combo5, KC_ENT),
     COMBO(enter_combo1, KC_ENT),
