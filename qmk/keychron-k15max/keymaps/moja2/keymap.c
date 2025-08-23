@@ -24,6 +24,7 @@ enum layers{
     WIN_FN,
     MOD1,
 	MOD2,
+	MOD3,
     GAME1
 };
 
@@ -32,7 +33,7 @@ enum {
 };
 
 #define HM_GRV LT(WIN_BASE,KC_GRV)
-#define HM_Q LT(MOD1,KC_Q)
+#define HM_Q KC_Q
 #define HM_A LT(MOD2,KC_A)
 #define HM_R LT(WIN_BASE,KC_R)
 #define HM_C LT(WIN_BASE,KC_C)
@@ -47,7 +48,9 @@ enum {
 #define HM_W KC_W
 #define HM_T KC_T
 #define HM_B2 TD(TD_B2)
-#define HM_ESC LT(WIN_FN,KC_ESC)
+#define HM_ESC LT(MOD1,KC_ESC)
+#define HM_SPC LT(MOD3,KC_SPC)
+#define HM_RSFT LSFT_T(KC_ENT)
 
 #define HM_J KC_J
 #define HM_K KC_K
@@ -62,6 +65,7 @@ enum {
 #define HM2_F LT(WIN_FN,KC_9)
 #define HM2_D LT(WIN_FN,KC_LBRC)
 #define TLDSL LT(WIN_FN,KC_GRV)
+#define SPRL LT(WIN_FN,KC_SPC)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -87,12 +91,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_FILE,   KC_TAB,   HM_Q,     HM_W,     HM_E,     HM_R,     HM_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_HOME,
         HM_M3,     HM_ESC,   HM_A,     HM_S,     HM_D,     HM_F,     HM_G,     KC_H,     HM_J,     HM_K,     HM_L,     HM_SCLN,  KC_QUOT,            KC_ENT,             KC_END,
         G(KC_UP),  KC_LSFT,            HM_Z,     HM_X,     HM_C,     HM_V,     KC_B,     HM_B2,    HM_N,     HM_M,     HCOM,     KC_DOT,   KC_SLSH,  TG(MOD1),   KC_UP,
-        G(KC_DOWN),KC_LCTL,  KC_LWIN,            KC_BSPC,  KC_SPC,   KC_DEL,                                    KC_RSFT,  MO(WIN_FN),KC_LCTL,          KC_LEFT,  KC_DOWN,  KC_RGHT),
+        G(KC_DOWN),KC_LCTL,  KC_LWIN,            KC_BSPC,  HM_SPC,   KC_DEL,                                    HM_RSFT,  MO(WIN_FN),KC_LCTL,          KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [WIN_FN] = LAYOUT_ansi_90(
         BL_TOGG,   _______,  BL_DOWN,  BL_UP,    KC_TASK,  KC_FILE,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,            _______,
         _______,   A(KC_F4), KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   _______,            _______,
-        _______,   KC_TAB,   S(KC_6),  S(KC_BSLS),S(KC_7), S(KC_MINS),S(KC_4), KC_PGUP,  KC_PGDN,  TLDSL,    XXXXXXX,  XXXXXXX,  _______,  _______,  _______,            KC_PGDN,
+        _______,   KC_TAB,   S(KC_6),  S(KC_BSLS),S(KC_7), S(KC_MINS),S(KC_4), KC_PGUP,  KC_PGDN,  TLDSL,    SPRL,     XXXXXXX,  _______,  _______,  _______,            KC_PGDN,
         _______,   KC_CAPS,  KC_EQUAL, S(KC_1),  HM2_D,    HM2_F,    KC_MINS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  S(KC_SCLN),S(KC_QUOT),        _______,            KC_END,
         _______,   _______,            S(KC_3),  S(KC_2),  S(KC_5),  S(KC_8),  S(KC_EQL),BAT_LVL,  KC_HOME,  KC_END,   S(KC_COMM),S(KC_DOT),KC_BSLS, _______,    _______,
         _______,   _______,  _______,            _______,  _______,  _______,                      _______,            _______,  _______,             _______,   _______,  _______),
@@ -100,11 +104,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MOD1] = LAYOUT_ansi_90(
         _______,   _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   TO(GAME1),_______,            _______,
         _______,   _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   KC_F12,   _______,            _______,
-        _______,   _______,  _______,  A(KC_TAB),KC_UP,C(S(KC_TAB)), C(KC_TAB),XXXXXXX,  KC_7,      KC_8,     KC_9,    XXXXXXX,  _______,  _______,  _______,            _______,
-        _______,   KC_CAPS,  _______,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_ENT,   XXXXXXX,  KC_4,      KC_5,     KC_6,    XXXXXXX,  _______,            _______,            _______,
-        _______,   _______,            XXXXXXX,  XXXXXXX,  KC_HOME,  KC_END,   XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_1,    KC_2,     KC_3,     XXXXXXX,  _______,    _______,
+        _______,   _______,  KC_HOME,  KC_UP,    KC_END,   KC_PGUP,  KC_PGDN,  XXXXXXX,  KC_7,      KC_8,     KC_9,    XXXXXXX,  _______,  _______,  _______,            _______,
+        _______,   KC_CAPS,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_ENT,   XXXXXXX,  XXXXXXX,  KC_4,      KC_5,     KC_6,    XXXXXXX,  _______,            _______,            _______,
+        _______,   _______,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_1,    KC_2,     KC_3,     XXXXXXX,  _______,    _______,
         _______,   _______,  _______,            _______,  _______,  _______,                       KC_0,              XXXXXXX,  _______,            _______,    _______,  _______),
         
+    [MOD3] = LAYOUT_ansi_90(
+        _______,   _______,  KC_F1,    KC_F2,       KC_F3,    KC_F4,     KC_F5,      KC_F6,      KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   TO(GAME1),_______,            _______,
+        _______,   _______,  KC_F1,    KC_F2,       KC_F3,    KC_F4,     KC_F5,      KC_F6,      KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   KC_F12,   _______,            _______,
+        _______,   _______,  XXXXXXX,  XXXXXXX,     KC_HOME,  KC_END,    KC_PGUP,    XXXXXXX,    KC_7,      KC_8,     KC_9,    XXXXXXX,  _______,  _______,  _______,            _______,
+        _______,   KC_CAPS,  A(KC_TAB),C(S(KC_TAB)),C(KC_TAB),KC_ENT,    KC_PGDN,    XXXXXXX,    KC_4,      KC_5,     KC_6,    XXXXXXX,  _______,            _______,            _______,
+        _______,   _______,            XXXXXXX,     A(KC_F4), KC_F5,     A(KC_LEFT), A(KC_RIGHT),XXXXXXX,   XXXXXXX,  KC_1,    KC_2,     KC_3,     XXXXXXX,  _______,    _______,
+        _______,   _______,  _______,               _______,  _______,   _______,                         KC_0,              XXXXXXX,  _______,            _______,    _______,  _______),
+
     [MOD2] = LAYOUT_ansi_90(
         XXXXXXX,   XXXXXXX,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   KC_F12,   XXXXXXX,            XXXXXXX,
         XXXXXXX,   XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,      KC_8,     KC_9,    KC_0,     XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,
@@ -130,6 +142,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [WIN_FN]  =  { ENCODER_CCW_CW(BL_DOWN, BL_UP)},
     [MOD1]  =    { ENCODER_CCW_CW(BL_DOWN, BL_UP)},
 	[MOD2]  =    { ENCODER_CCW_CW(BL_DOWN, BL_UP)},
+	[MOD3]  =    { ENCODER_CCW_CW(BL_DOWN, BL_UP)},
     [GAME1] =    { ENCODER_CCW_CW(KC_VOLD, KC_VOLU)}
 };
 #endif // ENCODER_MAP_ENABLE
@@ -140,6 +153,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
     switch (keycode) {
+		case SPRL:
+			if (record->event.pressed) {
+                SEND_STRING("spring.cloud.config.label=");
+                return false;
+            }
 		case TLDSL:
 			if (record->event.pressed) {
                 tap_code16(S(KC_GRV));
@@ -213,16 +231,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-const uint16_t PROGMEM enter_combo1[]   = {HM_J, HM_K, COMBO_END};
-const uint16_t PROGMEM enter_combo2[]   = {KC_UP, KC_DOWN, COMBO_END};
 const uint16_t PROGMEM enter_combo3[]   = {KC_UP, KC_RIGHT, COMBO_END};
-const uint16_t PROGMEM enter_combo6[]   = {KC_RIGHT, KC_DOWN, COMBO_END};
-const uint16_t PROGMEM enter_combo5[]   = {HM2_F, HM2_D, COMBO_END};
 combo_t key_combos[] = {
-    COMBO(enter_combo5, KC_ENT),
-    COMBO(enter_combo1, KC_ENT),
-    COMBO(enter_combo2, KC_ENT),
-    COMBO(enter_combo6, KC_ENT),
 	COMBO(enter_combo3, KC_ESC),
 };
 
@@ -245,3 +255,14 @@ void tap_dance_b2(tap_dance_state_t *state, void *user_data) {
 tap_dance_action_t tap_dance_actions[] = {
     [TD_B2] = ACTION_TAP_DANCE_FN(tap_dance_b2),
 };
+
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case HM_RSFT:
+            // Immediately select the hold action when another key is pressed.
+            return true;
+        default:
+            // Do not select the hold action when another key is pressed.
+            return false;
+    }
+}
