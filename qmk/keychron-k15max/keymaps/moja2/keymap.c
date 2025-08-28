@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_FILE,   KC_TAB,   HM_Q,     HM_W,     HM_E,     HM_R,     HM_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_HOME,
         HM_M3,     HM_ESC,   HM_A,     HM_S,     HM_D,     HM_F,     HM_G,     KC_H,     HM_J,     HM_K,     HM_L,     HM_SCLN,  KC_QUOT,            KC_ENT,             KC_END,
         G(KC_UP),  KC_LSFT,            HM_Z,     HM_X,     HM_C,     HM_V,     KC_B,     HM_B2,    HM_N,     HM_M,     HCOM,     KC_DOT,   KC_SLSH,  TG(MOD1),   KC_UP,
-        G(KC_DOWN),KC_LCTL,  KC_LWIN,            KC_BSPC,  HM_SPC,   KC_DEL,                                    HM_RSFT,  MO(WIN_FN),KC_LCTL,          KC_LEFT,  KC_DOWN,  KC_RGHT),
+        G(KC_DOWN),KC_LCTL,  KC_LALT,            KC_BSPC,  HM_SPC,   KC_DEL,                                    HM_RSFT,  MO(WIN_FN),KC_LCTL,          KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [WIN_FN] = LAYOUT_ansi_90(
         BL_TOGG,   _______,  BL_DOWN,  BL_UP,    KC_TASK,  KC_FILE,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,            _______,
