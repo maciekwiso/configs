@@ -57,8 +57,11 @@ enum {
 #define HM_L KC_L
 #define HM_M KC_M
 #define HM_N KC_N
-#define HCOM LALT_T(KC_COMM)
-#define HM_SCLN RALT_T(KC_SCLN)
+#define HCOM LT(WIN_BASE,KC_COMM)
+#define HM_DOT LT(WIN_BASE,KC_DOT)
+#define HM_SLSH LT(WIN_BASE,KC_SLSH)
+#define HM_SCLN LT(WIN_BASE,KC_SCLN)
+#define HM_QUOT LT(WIN_BASE,KC_QUOT)
 #define HM_M1 LT(WIN_BASE,KC_F5)
 #define HM_M3 LSG(KC_LEFT)
 
@@ -89,8 +92,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_MUTE,   KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_INS,             KC_PGUP,
         HM_M1,     HM_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,            KC_PGDN,
         KC_FILE,   KC_TAB,   HM_Q,     HM_W,     HM_E,     HM_R,     HM_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_HOME,
-        HM_M3,     HM_ESC,   HM_A,     HM_S,     HM_D,     HM_F,     HM_G,     KC_H,     HM_J,     HM_K,     HM_L,     HM_SCLN,  KC_QUOT,            KC_ENT,             KC_END,
-        G(KC_UP),  KC_LSFT,            HM_Z,     HM_X,     HM_C,     HM_V,     KC_B,     HM_B2,    HM_N,     HM_M,     HCOM,     KC_DOT,   KC_SLSH,  TG(MOD1),   KC_UP,
+        HM_M3,     HM_ESC,   HM_A,     HM_S,     HM_D,     HM_F,     HM_G,     KC_H,     HM_J,     HM_K,     HM_L,     HM_SCLN,  HM_QUOT,            KC_ENT,             KC_END,
+        G(KC_UP),  KC_LSFT,            HM_Z,     HM_X,     HM_C,     HM_V,     KC_B,     HM_B2,    HM_N,     HM_M,     HCOM,     HM_DOT,   HM_SLSH,  TG(MOD1),   KC_UP,
         G(KC_DOWN),KC_LCTL,  KC_LALT,            KC_BSPC,  HM_SPC,   KC_DEL,                                    HM_RSFT,  MO(WIN_FN),KC_LCTL,          KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [WIN_FN] = LAYOUT_ansi_90(
@@ -164,6 +167,51 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 				tap_code16(KC_SLSH);
                 return false;
             }
+		case LT(WIN_BASE,KC_SLSH):
+			if (record->event.pressed) {
+				if (!record->tap.count) {
+					tap_code16(KC_BSLS);
+				} else {
+					tap_code16(KC_SLSH);
+				}
+            }
+            return false;
+		case LT(WIN_BASE,KC_COMM):
+			if (record->event.pressed) {
+				if (!record->tap.count) {
+					tap_code16(S(KC_COMM));
+				} else {
+					tap_code16(KC_COMM);
+				}
+            }
+            return false;
+		case LT(WIN_BASE,KC_DOT):
+			if (record->event.pressed) {
+				if (!record->tap.count) {
+					tap_code16(S(KC_DOT));
+				} else {
+					tap_code16(KC_DOT);
+				}
+            }
+            return false;
+		case LT(WIN_BASE,KC_SCLN):
+			if (record->event.pressed) {
+				if (!record->tap.count) {
+					tap_code16(S(KC_SCLN));
+				} else {
+					tap_code16(KC_SCLN);
+				}
+            }
+            return false;
+		case LT(WIN_BASE,KC_QUOT):
+			if (record->event.pressed) {
+				if (!record->tap.count) {
+					tap_code16(S(KC_QUOT));
+				} else {
+					tap_code16(KC_QUOT);
+				}
+            }
+            return false;
 		case LT(WIN_FN,KC_9):
 			if (record->event.pressed) {
 				if (!record->tap.count) {
@@ -265,4 +313,12 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
             // Do not select the hold action when another key is pressed.
             return false;
     }
+}
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case HM_RSFT:
+            return 100;
+	}
+	return TAPPING_TERM;
 }
