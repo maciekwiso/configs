@@ -49,13 +49,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	LAYOUT(
 		KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,   KC_5,  KC_NO,   KC_NO,   KC_NO,   KC_6,    KC_7,  KC_8,       KC_9,    KC_0,    HM_B2,
-		KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,  KC_INS,  KC_HOME, KC_PGUP, KC_Y,    KC_U,  KC_I,       KC_O,    KC_P,    KC_RBRC,
+		KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,  KC_INS,  KC_HOME, KC_PGUP, KC_Y,    KC_U,  KC_I,       KC_O,    KC_P,    KC_LBRC,
 		HM_ESC,  HM_A,    HM_S,    HM_D,    HM_F,   KC_G,  KC_DEL,  KC_END,  KC_PGDN, KC_H,    KC_J,  KC_K,       KC_L,    HM_SCLN, HM_QUOT,
 		KC_LSFT, HM_Z,    HM_X,    HM_C,    HM_V,   KC_B,  KC_NO,   KC_UP,   KC_NO,   KC_N,    KC_M,  HM_COM,     HM_DOT,  HM_SLSH, KC_LSFT,
 		KC_LCTL, KC_LWIN, KC_LALT, KC_BSPC, HM_SPC, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, HM_RSFT, KC_NO, MO(WIN_FN), KC_LCTL, KC_LWIN, KC_RALT),
 	LAYOUT(
 		KC_NO,   KC_F1,    KC_F2,     KC_F3,   KC_F4,     KC_F5,     KC_F11,  KC_F12,  KC_NO,   KC_F6,   KC_F7,   KC_F8,     KC_F9,    KC_F10,    KC_NO,
-		KC_NO,   S(KC_6),  S(KC_BSLS),S(KC_7), S(KC_MINS),S(KC_4),   KC_NO,   KC_NO,   KC_NO,   KC_PGUP, KC_PGDN, KC_NO,     KC_NO,    KC_NO,     KC_NO,
+		KC_NO,   S(KC_6),  S(KC_BSLS),S(KC_7), S(KC_MINS),S(KC_4),   KC_NO,   KC_NO,   KC_NO,   KC_PGUP, KC_PGDN, KC_NO,     KC_NO,    KC_NO,     KC_RBRC,
 		KC_NO,   KC_EQUAL, S(KC_1),   HM2_D,   HM2_F,     KC_MINS,   KC_NO,   KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_UP,     KC_RGHT,  S(KC_SCLN),S(KC_QUOT),
 		KC_NO,   S(KC_3),  S(KC_2),   S(KC_5), S(KC_8),   S(KC_EQL), KC_NO,   KC_NO,   KC_NO,   KC_HOME, KC_END,  S(KC_COMM),S(KC_DOT),KC_BSLS,   KC_TRNS,
 		KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS),

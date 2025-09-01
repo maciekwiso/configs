@@ -15,6 +15,7 @@
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 15
 
+
 #define ENCODERS_PAD_A { B7,B7 }
 #define ENCODERS_PAD_B { B13,C14}
 
