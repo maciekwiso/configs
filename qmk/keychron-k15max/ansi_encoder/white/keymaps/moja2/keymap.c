@@ -30,16 +30,29 @@ enum layers{
 
 enum {
     TD_B2,
+	TD_COL,
+	TD_QUOT,
+	TD_COMM,
+	TD_DOT,
+	TD_SLSH,
+	TD_KC9,
+	TD_LBRC,
+	TD_CTLX,
+	TD_CTLZ,
+	TD_CTLC,
+	TD_CTLV,
+	TD_GRV,
+	TD_F5,
 };
 
-#define HM_GRV LT(WIN_BASE,KC_GRV)
+#define HM_GRV KC_GRV
 #define HM_Q KC_Q
 #define HM_A LT(MOD2,KC_A)
-#define HM_R LT(WIN_BASE,KC_R)
-#define HM_C LT(WIN_BASE,KC_C)
-#define HM_V LT(WIN_BASE,KC_V)
-#define HM_Z LT(WIN_BASE,KC_Z)
-#define HM_X LT(WIN_BASE,KC_X)
+#define HM_R KC_R
+#define HM_C TD(TD_CTLC)
+#define HM_V TD(TD_CTLV)
+#define HM_Z TD(TD_CTLZ)
+#define HM_X TD(TD_CTLX)
 #define HM_S LSFT_T(KC_S)
 #define HM_D LCTL_T(KC_D)
 #define HM_F LALT_T(KC_F)
@@ -57,16 +70,16 @@ enum {
 #define HM_L KC_L
 #define HM_M KC_M
 #define HM_N KC_N
-#define HCOM LT(WIN_BASE,KC_COMM)
-#define HM_DOT LT(WIN_BASE,KC_DOT)
-#define HM_SLSH LT(WIN_BASE,KC_SLSH)
-#define HM_SCLN LT(WIN_BASE,KC_SCLN)
-#define HM_QUOT LT(WIN_BASE,KC_QUOT)
-#define HM_M1 LT(WIN_BASE,KC_F5)
+#define HCOM TD(TD_COMM)
+#define HM_DOT TD(TD_DOT)
+#define HM_SLSH TD(TD_SLSH)
+#define HM_SCLN TD(TD_COL)
+#define HM_QUOT TD(TD_QUOT)
+#define HM_M1 TD(TD_F5)
 #define HM_M3 LSG(KC_LEFT)
 
-#define HM2_F LT(WIN_FN,KC_9)
-#define HM2_D LT(WIN_FN,KC_LBRC)
+#define HM2_F TD(TD_KC9)
+#define HM2_D TD(TD_LBRC)
 #define TLDSL LT(WIN_FN,KC_GRV)
 #define SPRL LT(WIN_FN,KC_SPC)
 
@@ -94,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_FILE,   KC_TAB,   HM_Q,     HM_W,     HM_E,     HM_R,     HM_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_HOME,
         HM_M3,     HM_ESC,   HM_A,     HM_S,     HM_D,     HM_F,     HM_G,     KC_H,     HM_J,     HM_K,     HM_L,     HM_SCLN,  HM_QUOT,            KC_ENT,             KC_END,
         G(KC_UP),  KC_LSFT,            HM_Z,     HM_X,     HM_C,     HM_V,     KC_B,     HM_B2,    HM_N,     HM_M,     HCOM,     HM_DOT,   HM_SLSH,  TG(MOD1),   KC_UP,
-        G(KC_DOWN),KC_LCTL,  KC_LALT,            KC_BSPC,  HM_SPC,   KC_DEL,                                    HM_RSFT,  MO(WIN_FN),KC_LCTL,          KC_LEFT,  KC_DOWN,  KC_RGHT),
+        G(KC_DOWN),KC_LCTL,  LALT_T(KC_INS),     KC_BSPC,  HM_SPC,   KC_DEL,                                    HM_RSFT,  MO(WIN_FN),KC_LCTL,          KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [WIN_FN] = LAYOUT_ansi_90(
         BL_TOGG,   _______,  BL_DOWN,  BL_UP,    KC_TASK,  KC_FILE,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,            _______,
@@ -113,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   _______,  _______,            _______,  _______,  _______,                       KC_0,              XXXXXXX,  _______,            _______,    _______,  _______),
         
     [MOD3] = LAYOUT_ansi_90(
-        _______,   _______,  KC_F1,    KC_F2,       KC_F3,    KC_F4,     KC_F5,      KC_F6,      KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   TO(GAME1),_______,            _______,
+        _______,   QK_BOOT,  KC_F1,    KC_F2,       KC_F3,    KC_F4,     KC_F5,      KC_F6,      KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   TO(GAME1),_______,            _______,
         _______,   _______,  KC_F1,    KC_F2,       KC_F3,    KC_F4,     KC_F5,      KC_F6,      KC_F7,     KC_F8,    KC_F9,   KC_F10,   KC_F11,   KC_F12,   _______,            _______,
         _______,   _______,  XXXXXXX,  XXXXXXX,     KC_HOME,  KC_END,    KC_PGUP,    XXXXXXX,    KC_7,      KC_8,     KC_9,    XXXXXXX,  _______,  _______,  _______,            _______,
         _______,   KC_CAPS,  A(KC_TAB),C(S(KC_TAB)),C(KC_TAB),KC_ENT,    KC_PGDN,    XXXXXXX,    KC_4,      KC_5,     KC_6,    XXXXXXX,  _______,            _______,            _______,
@@ -150,139 +163,44 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
-// clang-format on
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_record_keychron_common(keycode, record)) {
-        return false;
+typedef struct {
+    uint16_t tap;
+    uint16_t hold;
+    uint16_t held;
+} tap_dance_tap_hold_t;
+
+void tap_dance_tap_hold_finished(tap_dance_state_t *state, void *user_data) {
+    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
+
+    if (state->pressed) {
+        if (state->count == 1
+#ifndef PERMISSIVE_HOLD
+            && !state->interrupted
+#endif
+        ) {
+            register_code16(tap_hold->hold);
+            tap_hold->held = tap_hold->hold;
+        } else {
+            register_code16(tap_hold->tap);
+            tap_hold->held = tap_hold->tap;
+        }
     }
-    switch (keycode) {
-		case SPRL:
-			if (record->event.pressed) {
-                SEND_STRING("spring.cloud.config.label=");
-                return false;
-            }
-		case TLDSL:
-			if (record->event.pressed) {
-                tap_code16(S(KC_GRV));
-				tap_code16(KC_SLSH);
-                return false;
-            }
-		case LT(WIN_BASE,KC_SLSH):
-			if (record->event.pressed) {
-				if (!record->tap.count) {
-					tap_code16(KC_BSLS);
-				} else {
-					tap_code16(KC_SLSH);
-				}
-            }
-            return false;
-		case LT(WIN_BASE,KC_COMM):
-			if (record->event.pressed) {
-				if (!record->tap.count) {
-					tap_code16(S(KC_COMM));
-				} else {
-					tap_code16(KC_COMM);
-				}
-            }
-            return false;
-		case LT(WIN_BASE,KC_DOT):
-			if (record->event.pressed) {
-				if (!record->tap.count) {
-					tap_code16(S(KC_DOT));
-				} else {
-					tap_code16(KC_DOT);
-				}
-            }
-            return false;
-		case LT(WIN_BASE,KC_SCLN):
-			if (record->event.pressed) {
-				if (!record->tap.count) {
-					tap_code16(S(KC_SCLN));
-				} else {
-					tap_code16(KC_SCLN);
-				}
-            }
-            return false;
-		case LT(WIN_BASE,KC_QUOT):
-			if (record->event.pressed) {
-				if (!record->tap.count) {
-					tap_code16(S(KC_QUOT));
-				} else {
-					tap_code16(KC_QUOT);
-				}
-            }
-            return false;
-		case LT(WIN_FN,KC_9):
-			if (record->event.pressed) {
-				if (!record->tap.count) {
-					tap_code16(S(KC_0));
-				} else {
-					tap_code16(S(KC_9));
-				}
-            }
-            return false;
-		case LT(WIN_FN,KC_LBRC):
-			if (record->event.pressed) {
-				if (!record->tap.count) {
-					tap_code16(S(KC_RBRC));
-				} else {
-					tap_code16(S(KC_LBRC));
-				}
-            }
-            return false;
-        case LT(WIN_BASE,KC_X):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(C(KC_X)); // Intercept hold function to send Ctrl-X
-                return false;
-            }
-            return true;             // Return true for normal processing of tap keycode
-        case LT(WIN_BASE,KC_C):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(C(KC_C)); // Intercept hold function to send Ctrl-C
-                return false;
-            }
-            return true;             // Return true for normal processing of tap keycode
-        case LT(WIN_BASE,KC_V):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(C(KC_V)); // Intercept hold function to send Ctrl-V
-                return false;
-            }
-        case LT(WIN_BASE,KC_Z):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(C(KC_Z));
-                return false;
-            }
-            break;
-        case LT(WIN_BASE,KC_GRV):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(A(KC_LEFT));
-                return false;
-            }
-            break;
-        case LT(WIN_BASE,KC_R):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(KC_INS);
-                return false;
-            }
-		case LT(WIN_BASE,KC_F5):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(A(KC_F4));
-                return false;
-            }
-		case LT(MOD2,KC_A):
-            if (!record->tap.count && record->event.pressed) {
-				register_mods(MOD_MASK_GUI);
-            } else if (!record->event.pressed) {
-				unregister_mods(MOD_MASK_GUI);
-			}
-    }
-    return true;
 }
 
-const uint16_t PROGMEM enter_combo3[]   = {KC_UP, KC_RIGHT, COMBO_END};
-combo_t key_combos[] = {
-	COMBO(enter_combo3, KC_ESC),
-};
+void tap_dance_tap_hold_reset(tap_dance_state_t *state, void *user_data) {
+    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
+
+    if (tap_hold->held) {
+        unregister_code16(tap_hold->held);
+        tap_hold->held = 0;
+    }
+}
+
+#define ACTION_TAP_DANCE_TAP_HOLD(tap, hold)                                        \
+    {                                                                               \
+        .fn        = {NULL, tap_dance_tap_hold_finished, tap_dance_tap_hold_reset}, \
+        .user_data = (void *)&((tap_dance_tap_hold_t){tap, hold, 0}),               \
+    }
 
 void tap_dance_b2(tap_dance_state_t *state, void *user_data) {
     if (state->count >= 4) {
@@ -301,7 +219,69 @@ void tap_dance_b2(tap_dance_state_t *state, void *user_data) {
 }
 
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_B2] = ACTION_TAP_DANCE_FN(tap_dance_b2),
+	[TD_B2] = ACTION_TAP_DANCE_FN(tap_dance_b2),
+    [TD_COL] = ACTION_TAP_DANCE_TAP_HOLD(KC_SCLN, KC_COLN),
+    [TD_QUOT] = ACTION_TAP_DANCE_TAP_HOLD(KC_QUOT, S(KC_QUOT)),
+	[TD_COMM] = ACTION_TAP_DANCE_TAP_HOLD(KC_COMM, S(KC_COMM)),
+	[TD_DOT] = ACTION_TAP_DANCE_TAP_HOLD(KC_DOT, S(KC_DOT)),
+	[TD_SLSH] = ACTION_TAP_DANCE_TAP_HOLD(KC_SLSH, KC_BSLS),
+	[TD_KC9] = ACTION_TAP_DANCE_TAP_HOLD(S(KC_9), S(KC_0)),
+	[TD_LBRC] = ACTION_TAP_DANCE_TAP_HOLD(S(KC_LBRC), S(KC_RBRC)),
+	[TD_CTLX] = ACTION_TAP_DANCE_TAP_HOLD(KC_X, C(KC_X)),
+	[TD_CTLZ] = ACTION_TAP_DANCE_TAP_HOLD(KC_Z, C(KC_Z)),
+	[TD_CTLC] = ACTION_TAP_DANCE_TAP_HOLD(KC_C, C(KC_C)),
+	[TD_CTLV] = ACTION_TAP_DANCE_TAP_HOLD(KC_V, C(KC_V)),
+	[TD_F5] = ACTION_TAP_DANCE_TAP_HOLD(KC_F5, A(KC_F4)),
+};
+
+// clang-format on
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_record_keychron_common(keycode, record)) {
+        return false;
+    }
+    switch (keycode) {
+		case TD(TD_COL):
+		case TD(TD_QUOT):
+		case TD(TD_COMM):
+		case TD(TD_DOT):
+		case TD(TD_SLSH):
+		case TD(TD_KC9):
+		case TD(TD_LBRC):
+		case TD(TD_CTLX):
+		case TD(TD_CTLZ):
+		case TD(TD_CTLC):
+		case TD(TD_CTLV):
+		case TD(TD_F5):
+            tap_dance_action_t *action = &tap_dance_actions[QK_TAP_DANCE_GET_INDEX(keycode)];
+            if (!record->event.pressed && action->state.count && !action->state.finished) {
+                tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)action->user_data;
+                tap_code16(tap_hold->tap);
+            }
+			break;
+		case SPRL:
+			if (record->event.pressed) {
+                SEND_STRING("spring.cloud.config.label=");
+                return false;
+            }
+		case TLDSL:
+			if (record->event.pressed) {
+                tap_code16(S(KC_GRV));
+				tap_code16(KC_SLSH);
+                return false;
+            }
+		case LT(MOD2,KC_A):
+            if (!record->tap.count && record->event.pressed) {
+				register_mods(MOD_MASK_GUI);
+            } else if (!record->event.pressed) {
+				unregister_mods(MOD_MASK_GUI);
+			}
+    }
+    return true;
+}
+
+const uint16_t PROGMEM enter_combo3[]   = {KC_UP, KC_RIGHT, COMBO_END};
+combo_t key_combos[] = {
+	COMBO(enter_combo3, KC_ESC),
 };
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {

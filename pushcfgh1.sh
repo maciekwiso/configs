@@ -10,7 +10,9 @@ cp -r init.lua lazy-lock.json lazyvim.json stylua.toml lua ftplugin ${me}/nvim/$
 
 #qmk
 rm -r ${me}/qmk/keychron-k15max/*
-cp -r /mnt/d/Dev/qmk_firmware/keyboards/keychron/k15_max/ansi_encoder/white/keymaps/ ${me}/qmk/keychron-k15max
+cp -r /mnt/d/Dev/qmk_firmware/keyboards/keychron/k15_max/* ${me}/qmk/keychron-k15max
+rm -r ${me}/qmk/c75stm/*
+cp -r /mnt/d/Dev/qmk_firmware/keyboards/c75stm/ ${me}/qmk/
 
 #intellij
 rm -r ${me}/intellij/keymaps/*
