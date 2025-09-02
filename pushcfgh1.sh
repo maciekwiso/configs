@@ -13,6 +13,8 @@ rm -r ${me}/qmk/keychron-k15max/*
 cp -r /mnt/d/Dev/qmk_firmware/keyboards/keychron/k15_max/* ${me}/qmk/keychron-k15max
 rm -r ${me}/qmk/c75stm/*
 cp -r /mnt/d/Dev/qmk_firmware/keyboards/c75stm/ ${me}/qmk/
+rm -r ${me}/qmk/epomaker/*
+cp -r /mnt/c/Users/macie/qmk_firmware/keyboards/epomaker/split65/ ${me}/qmk/epomaker
 
 #intellij
 rm -r ${me}/intellij/keymaps/*
