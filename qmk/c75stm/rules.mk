@@ -46,7 +46,7 @@ BOOTLOADER = stm32-dfu
 # Build Options
 #   comment out to disable the options.
 #
-BOOTMAGIC_ENABLE ?= no	# Virtual DIP switch configuration(+1000)
+# BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE ?= yes	# Mouse keys(+4700)
 #EXTRAKEY_ENABLE ?= yes	# Audio control and System control(+450)
 #CONSOLE_ENABLE ?= no	# Console for debug(+400)
@@ -57,16 +57,16 @@ NKRO_ENABLE ?= yes		# USB Nkey Rollover - if this doesn't work, see here: https:
 #AUDIO_ENABLE ?= no
 #RGBLIGHT_ENABLE ?= yes
 
-VIA_ENABLE = yes
+# VIA_ENABLE = yes
 # ENCODER_ENABLE = yes
 #ENCODER_MAP_ENABLE = yes
 # VIALRGB_ENABLE = yes
 # RGB_MATRIX_ENABLE = yes
 # RGB_MATRIX_DRIVER = WS2812
-VIAL_ENABLE = yes
-VIAL_ENCODERS_ENABLE = yes
-VIAL_INSECURE = yes
-LTO_ENABLE = yes
+# VIAL_ENABLE = yes
+# VIAL_ENCODERS_ENABLE = yes
+# VIAL_INSECURE = yes
+# LTO_ENABLE = yes
 QMK_SETTINGS = yes
 TAP_DANCE_ENABLE = yes
 COMBO_ENABLE = yes

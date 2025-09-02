@@ -4,12 +4,12 @@
 //#include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x6060
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    "qmkbuilder"
-#define PRODUCT         "keyboards"
-#define DESCRIPTION     "Keyboard"
+//#define VENDOR_ID       0xFEED
+//#define PRODUCT_ID      0x6060
+//#define DEVICE_VER      0x0001
+//#define MANUFACTURER    "qmkbuilder"
+//#define PRODUCT         "keyboards"
+// #define DESCRIPTION     "Keyboard"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -26,12 +26,12 @@
 #define TAPPING_TERM 200
 #define TAPPING_TERM_PER_KEY
 
-#define VIAL_KEYBOARD_UID {0xFB, 0xDD, 0xF4, 0xD2, 0xCF, 0xB4, 0x70, 0x8B}
+//#define VIAL_KEYBOARD_UID {0xFB, 0xDD, 0xF4, 0xD2, 0xCF, 0xB4, 0x70, 0x8B}
 
 /* key matrix pins */
 #define MATRIX_ROW_PINS { B6, B5, A2, A6, A7}
 #define MATRIX_COL_PINS { B0, B12, B15, B4, B8, B10, B1, C15, A5, A4, A3, A1, A0, B11, C13}
-#define UNUSED_PINS
+//#define UNUSED_PINS
 
 // #define LED_CAPS_LOCK_PIN 
 // #define LED_PIN_ON_STATE 0
@@ -46,7 +46,7 @@
 // #endif
 
 /* Set 0 if debouncing isn't needed */
-#define DEBOUNCING_DELAY 5
+#define DEBOUNCE 5
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
@@ -60,11 +60,11 @@
 )
 
 /* prevent stuck modifiers */
-#define PREVENT_STUCK_MODIFIERS
+// #define PREVENT_STUCK_MODIFIERS
 
-#define RGB_DI_PIN B14
+//#define RGB_DI_PIN B14
 // #ifdef RGB_DI_PIN
-#define RGBLIGHT_ANIMATIONS
+//#define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 87
 #define RGBLIGHT_HUE_STEP 8
 #define RGBLIGHT_SAT_STEP 8

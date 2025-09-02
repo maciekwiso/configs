@@ -1,10 +1,15 @@
 {
+	"usb": {
+		"pid":"0x6060",
+		"vid":"0xFEED",
+		"device_version":"1.0.0",
+	},
     "manufacturer": "qmkbuilder",
     "keyboard_name": "keyboard",
     "maintainer": "qmk",
     "bootloader": "stm32-dfu",
     "bootmagic": {
-        "enabled": false
+        "enabled": true
     },
     "build": {
         "lto": true
