@@ -41,7 +41,6 @@ enum {
 	TD_CTLZ,
 	TD_CTLC,
 	TD_CTLV,
-	TD_GRV,
 	TD_F5,
 };
 

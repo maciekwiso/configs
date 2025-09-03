@@ -27,8 +27,18 @@ enum {
 	TD_CTLZ,
 	TD_CTLC,
 	TD_CTLV,
-	TD_GRV,
+	TD_F1,
+	TD_F2,
+	TD_F3,
+	TD_F4,
 	TD_F5,
+	TD_F6,
+	TD_F7,
+	TD_F8,
+	TD_F9,
+	TD_F10,
+	TD_F11,
+	TD_F12,
 };
 
 #define HM_A LT(MOD2,KC_A)
@@ -54,13 +64,25 @@ enum {
 #define SPRL LT(WIN_FN,KC_SPC)
 #define HM_LALT LALT_T(KC_DEL)
 #define HM_LCTL LCTL_T(KC_INS)
+#define HM_1 TD(TD_F1)
+#define HM_2 TD(TD_F2)
+#define HM_3 TD(TD_F3)
+#define HM_4 TD(TD_F4)
+#define HM_5 TD(TD_F5)
+#define HM_6 TD(TD_F6)
+#define HM_7 TD(TD_F7)
+#define HM_8 TD(TD_F8)
+#define HM_9 TD(TD_F9)
+#define HM_10 TD(TD_F10)
+#define HM_11 TD(TD_F11)
+#define HM_12 TD(TD_F12)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [WIN_BASE] = LAYOUT( /* Base */
-        KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,               KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC, KC_F15,
-        KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS, KC_DEL,   
+        KC_GRV,   HM_1,     HM_2,     HM_3,     HM_4,     HM_5,               HM_6,     HM_7,     HM_8,     HM_9,     HM_10,    HM_11,    HM_12,   KC_BSPC, KC_F15,
+        KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS, HM_B2,   
         HM_ESC,   HM_A,     HM_S,     HM_D,     HM_F,     KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     HM_SCLN,  HM_QUOT,  KC_ENT,            KC_PGUP,
         KC_LSFT,  HM_Z,     HM_X,     HM_C,     HM_V,     KC_B,               KC_N,     KC_M,     HCOM,     HM_DOT,   HM_SLSH,            KC_RSFT,  KC_UP,   KC_PGDN,
         HM_LCTL,  HM_LALT,  KC_BSPC,  HM_SPC,                                 HM_RSFT,  MO(WIN_FN),KC_LCTL, KC_RALT,                      KC_LEFT,  KC_DOWN, KC_RGHT),
@@ -162,7 +184,7 @@ void tap_dance_b2(tap_dance_state_t *state, void *user_data) {
 		tap_code_delay(KC_NO, 1200);
 		tap_code16(KC_ENT);
     } else {
-        tap_code16(KC_B);
+        tap_code16(KC_DEL);
     }
 }
 
@@ -179,7 +201,18 @@ tap_dance_action_t tap_dance_actions[] = {
 	[TD_CTLZ] = ACTION_TAP_DANCE_TAP_HOLD(KC_Z, C(KC_Z)),
 	[TD_CTLC] = ACTION_TAP_DANCE_TAP_HOLD(KC_C, C(KC_C)),
 	[TD_CTLV] = ACTION_TAP_DANCE_TAP_HOLD(KC_V, C(KC_V)),
-	[TD_F5] = ACTION_TAP_DANCE_TAP_HOLD(KC_F5, A(KC_F4)),
+	[TD_F1] = ACTION_TAP_DANCE_TAP_HOLD(KC_1, KC_F1),
+	[TD_F2] = ACTION_TAP_DANCE_TAP_HOLD(KC_2, KC_F2),
+	[TD_F3] = ACTION_TAP_DANCE_TAP_HOLD(KC_3, KC_F3),
+	[TD_F4] = ACTION_TAP_DANCE_TAP_HOLD(KC_4, KC_F4),
+	[TD_F5] = ACTION_TAP_DANCE_TAP_HOLD(KC_5, KC_F5),
+	[TD_F6] = ACTION_TAP_DANCE_TAP_HOLD(KC_6, KC_F6),
+	[TD_F7] = ACTION_TAP_DANCE_TAP_HOLD(KC_7, KC_F7),
+	[TD_F8] = ACTION_TAP_DANCE_TAP_HOLD(KC_8, KC_F8),
+	[TD_F9] = ACTION_TAP_DANCE_TAP_HOLD(KC_9, KC_F9),
+	[TD_F10] = ACTION_TAP_DANCE_TAP_HOLD(KC_0, KC_F10),
+	[TD_F11] = ACTION_TAP_DANCE_TAP_HOLD(KC_MINS, KC_F11),
+	[TD_F12] = ACTION_TAP_DANCE_TAP_HOLD(KC_EQL, KC_F12),
 };
 
 // clang-format on
@@ -196,7 +229,18 @@ bool process_record_user_keymap(uint16_t keycode, keyrecord_t *record) {
 		case TD(TD_CTLZ):
 		case TD(TD_CTLC):
 		case TD(TD_CTLV):
+		case TD(TD_F1):
+		case TD(TD_F2):
+		case TD(TD_F3):
+		case TD(TD_F4):
 		case TD(TD_F5):
+		case TD(TD_F6):
+		case TD(TD_F7):
+		case TD(TD_F8):
+		case TD(TD_F9):
+		case TD(TD_F10):
+		case TD(TD_F11):
+		case TD(TD_F12):
             tap_dance_action_t *action = &tap_dance_actions[QK_TAP_DANCE_GET_INDEX(keycode)];
             if (!record->event.pressed && action->state.count && !action->state.finished) {
                 tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)action->user_data;
