@@ -22,7 +22,7 @@ To reset the board into bootloader mode, do the following:
 
 * connect only left side
 * Hold the Escape key while connecting the USB cable to the left half (it might erase persistent settings)
-* Flash the left side and disconnect is from usb
+* Flash the left side and disconnect it from usb
 * Move the switch behind of RShift key (you should remove the keycap) lower position. 
 Remove both the RSpace keycap and switch. Poke two holes just beside of the big hole with a tweezer or paper clip while connecting the USB cable to the right half.
   - After flashing this firmware, you can do this by holding Right arrow key instead of poking the holes.
