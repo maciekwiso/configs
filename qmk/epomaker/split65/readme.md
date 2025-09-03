@@ -18,14 +18,18 @@ Flashing example for this keyboard:
 
     qmk flash -kb epomaker/split65 -km via
 
-To reset the board into bootloader mode, do one of the following:
+To reset the board into bootloader mode, do the following:
 
+* connect only left side
 * Hold the Escape key while connecting the USB cable to the left half (it might erase persistent settings)
-* Move the switch behind of RShift key (you should remove the keycap) lower position. Remove both the RSpace keycap and switch. Poke two holes just beside of the big hole with a tweezer or paper clip while connecting the USB cable to the right half.
+* Flash the left side and disconnect is from usb
+* Move the switch behind of RShift key (you should remove the keycap) lower position. 
+Remove both the RSpace keycap and switch. Poke two holes just beside of the big hole with a tweezer or paper clip while connecting the USB cable to the right half.
   - After flashing this firmware, you can do this by holding Right arrow key instead of poking the holes.
   - **NOTE**: Don't forget making switch back! It won't work unless the switch is in the correct place.
   ![Howto](https://github.com/gwangyi/Split65/raw/main/howto.jpg)
-
+* Connect right side only via usb to pc
+* Flash the right side only
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 
 ## Bootloader

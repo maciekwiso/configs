@@ -2,5 +2,6 @@
 ^F11::Run "D:\Gry\nircmd-x64\nircmd changeappvolume chrome.exe -0.1"
 F13::Run "D:\Gry\nircmd-x64\nircmd changeappvolume chrome.exe -0.1"
 F14::Run "D:\Gry\nircmd-x64\nircmd changeappvolume chrome.exe +0.1"
-F15::#2
+#F15::#2
+F15::Send("{Volume_Mute}")
 Pause::NumLock
