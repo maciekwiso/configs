@@ -10,6 +10,7 @@ enum layers {
     MOD1,
 	MOD2,
 	MOD3,
+	GAME1,
 };
 
 #define ______ HS_BLACK
@@ -53,7 +54,7 @@ enum {
 #define HM_ESC LT(MOD1,KC_ESC)
 #define HM_SPC LT(MOD3,KC_SPC)
 #define HM_RSFT LSFT_T(KC_ENT)
-#define HCOM TD(TD_COMM)
+#define HM_COM TD(TD_COMM)
 #define HM_DOT TD(TD_DOT)
 #define HM_SLSH TD(TD_SLSH)
 #define HM_SCLN TD(TD_COL)
@@ -84,36 +85,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV,   HM_1,     HM_2,     HM_3,     HM_4,     HM_5,               HM_6,     HM_7,     HM_8,     HM_9,     HM_10,    HM_11,    HM_12,   KC_BSPC, KC_F15,
         KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS, HM_B2,   
         HM_ESC,   HM_A,     HM_S,     HM_D,     HM_F,     KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     HM_SCLN,  HM_QUOT,  KC_ENT,            KC_PGUP,
-        KC_LSFT,  HM_Z,     HM_X,     HM_C,     HM_V,     KC_B,               KC_N,     KC_M,     HCOM,     HM_DOT,   HM_SLSH,            KC_RSFT,  KC_UP,   KC_PGDN,
+        KC_LSFT,  HM_Z,     HM_X,     HM_C,     HM_V,     KC_B,               KC_N,     KC_M,     HM_COM,   HM_DOT,   HM_SLSH,            KC_RSFT,  KC_UP,   KC_PGDN,
         HM_LCTL,  HM_LALT,  KC_BSPC,  HM_SPC,                                 HM_RSFT,  MO(WIN_FN),KC_LCTL, KC_RALT,                      KC_LEFT,  KC_DOWN, KC_RGHT),
 
-    [WIN_FN] = LAYOUT( /* Base */
+    [WIN_FN] = LAYOUT( /* right FN */
         KC_GRV,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,              KC_F6,    KC_F7,    KC_F8,    KC_F9,     KC_F10,   KC_F11,  KC_F12,   EE_CLR,   _______,
         KC_TAB,   S(KC_6),  S(KC_BSLS),S(KC_7), S(KC_MINS),S(KC_4),           KC_PGUP,  KC_PGDN,  TLDSL,    SPRL,      XXXXXXX,  RGB_HUD, RGB_HUI,  _______,  KC_INS,  
         KC_CAPS,  KC_EQUAL, S(KC_1),  HM2_D,    HM2_F,    KC_MINS,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  S(KC_SCLN),S(KC_QUOT),_______,          KC_HOME, 
         _______,  S(KC_3),  S(KC_2),  S(KC_5),  S(KC_8),  S(KC_EQL),          KC_HOME,  KC_END,   S(KC_COMM),S(KC_DOT),KC_BSLS,           _______,  RGB_VAI,  KC_END,
         _______,  _______,  _______,  _______,                                _______,  _______,  _______, _______,                       RGB_SPD,  RGB_VAD,  RGB_SPI),
 
-    [MOD1] = LAYOUT( /* Base */
+    [MOD1] = LAYOUT( /* esc hold */
         KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,              KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_BSPC, KC_MUTE,
         KC_TAB,   KC_HOME,  KC_UP,    KC_END,   KC_PGUP,  KC_PGDN,            XXXXXXX,  KC_7,     KC_8,     KC_9,     XXXXXXX,  KC_LBRC,  KC_RBRC,  KC_BSLS, KC_DEL,   
         KC_CAPS,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_ENT,   XXXXXXX,            XXXXXXX,  KC_4,     KC_5,     KC_6,     XXXXXXX,  KC_QUOT,  KC_ENT,            KC_PGUP,
         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,  KC_1,     KC_2,     KC_3,     XXXXXXX,            KC_RSFT,  KC_UP,   KC_PGDN,
         _______,  _______,  _______,  _______,                                KC_0,     XXXXXXX,  XXXXXXX,  XXXXXXX,                      KC_LEFT,  KC_DOWN, KC_RGHT),
 		
-    [MOD3] = LAYOUT( /* Base */
-        QK_BOOT,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,              KC_F6,    KC_F7,    KC_F8,    KC_F9,     KC_F10,   KC_F11,  KC_F12,   EE_CLR,   _______,
+    [MOD3] = LAYOUT( /* left space hold */
+        QK_BOOT,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,              KC_F6,    KC_F7,    KC_F8,    KC_F9,     KC_F10,   KC_F11,  KC_F12,   TO(GAME1), _______,
         _______,  XXXXXXX,  XXXXXXX,  KC_HOME,  KC_END,   KC_PGUP,            XXXXXXX,  KC_7,     KC_8,     KC_9,      XXXXXXX,  RGB_HUD, RGB_HUI,  _______,  KC_INS,  
         KC_CAPS,  A(KC_TAB),C(S(KC_TAB)),C(KC_TAB),KC_ENT,KC_PGDN,            XXXXXXX,  KC_4,     KC_5,     KC_6,      XXXXXXX,  RGB_SAI, _______,            KC_HOME, 
         _______,  XXXXXXX,  A(KC_F4), KC_F5,    MS_BTN4,  MS_BTN5,            XXXXXXX,  KC_1,     KC_2,     KC_3,      XXXXXXX,           _______,  RGB_VAI,  KC_END,
         _______,  _______,  _______,  _______,                                KC_0,     XXXXXXX,  XXXXXXX, XXXXXXX,                       RGB_SPD,  RGB_VAD,  RGB_SPI),
 
-    [MOD2] = LAYOUT( /* Base */
+    [MOD2] = LAYOUT( /* A hold */
         KC_GRV,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,              KC_F6,    KC_F7,    KC_F8,    KC_F9,     KC_F10,   KC_F11,  KC_F12,   EE_CLR,   _______,
         XXXXXXX,  XXXXXXX,  KC_5,     KC_6,     KC_7,     KC_8,               XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,    XXXXXXX,  RGB_HUD, RGB_HUI,  _______,  KC_INS,  
         XXXXXXX,  XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_4,               KC_5,     KC_6,     KC_7,    KC_8,       KC_9,     KC_0,    _______,            KC_HOME, 
         _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_M,               XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,    XXXXXXX,           _______,  RGB_VAI,  KC_END,
         _______,  _______,  _______,  _______,                                _______,  _______,  _______, _______,                       RGB_SPD,  RGB_VAD,  RGB_SPI),
+		
+    [GAME1] = LAYOUT( /* Base */
+        KC_ESC,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,               KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQUAL, KC_BSPC, KC_MUTE,
+        KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS, KC_DEL,   
+        KC_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,  KC_ENT,            KC_PGUP,
+        KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,            KC_RSFT,  KC_UP,   KC_PGDN,
+        KC_LCTL,  KC_LGUI,  KC_LALT,  KC_SPC,                                 KC_SPC,   KC_RALT,  TG(GAME1),KC_RCTL,                      KC_LEFT,  KC_DOWN, KC_RGHT),
+
 };
 
 
@@ -124,6 +133,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [2] = {ENCODER_CCW_CW(_______, _______)},
     [3] = {ENCODER_CCW_CW(_______, _______)},
     [4] = {ENCODER_CCW_CW(_______, _______)},
+    [5] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
 };
 #endif
 // clang-format on

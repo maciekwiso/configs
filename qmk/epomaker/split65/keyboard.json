@@ -7,10 +7,10 @@
         "enabled": true,
         "matrix": [1, 0]
     },
-    "debounce": 1,
+    "debounce": 5,
     "diode_direction": "ROW2COL",
     "dynamic_keymap": {
-        "layer_count": 5
+        "layer_count": 6
     },
     "eeprom": {
         "driver": "wear_leveling",
@@ -120,8 +120,7 @@
             "typing_heatmap": true
         },
         "default": {
-			"on": false,
-            "animation": "cycle_left_right",
+            "animation": "none",
             "speed": 135,
             "val": 150
         },
