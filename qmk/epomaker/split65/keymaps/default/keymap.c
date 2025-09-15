@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  XXXXXXX,  KC_5,     KC_6,     KC_7,     KC_8,               XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,    XXXXXXX,  RGB_HUD, RGB_HUI,  _______,  KC_INS,  
         XXXXXXX,  XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_4,               KC_5,     KC_6,     KC_7,    KC_8,       KC_9,     KC_0,    _______,            KC_HOME, 
         _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_M,               XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,    XXXXXXX,           _______,  RGB_VAI,  KC_END,
-        _______,  _______,  _______,  _______,                                _______,  _______,  _______, _______,                       RGB_SPD,  RGB_VAD,  RGB_SPI),
+        _______,  _______,  S(KC_LEFT),_______,                                _______,  _______,  _______, _______,                       RGB_SPD,  RGB_VAD,  RGB_SPI),
 		
     [GAME1] = LAYOUT( /* Base */
         KC_ESC,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,               KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQUAL, KC_BSPC, KC_MUTE,

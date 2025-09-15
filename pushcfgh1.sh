@@ -15,6 +15,8 @@ rm -r ${me}/qmk/c75stm/*
 cp -r /mnt/d/Dev/qmk_firmware/keyboards/c75stm/ ${me}/qmk/
 rm -r ${me}/qmk/epomaker/*
 cp -r /mnt/c/Users/macie/qmk_firmware/keyboards/epomaker/split65/ ${me}/qmk/epomaker
+rm -r ${me}/qmk/keebio/*
+cp -r /mnt/c/Users/macie/qmk_firmware/keyboards/keebio/iris_lm/ ${me}/qmk/keebio
 
 #intellij
 rm -r ${me}/intellij/keymaps/*
