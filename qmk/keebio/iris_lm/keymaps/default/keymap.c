@@ -37,6 +37,7 @@ enum {
 	TD_F10,
 	TD_F11,
 	TD_F12,
+	TD_SQBRC
 };
 
 #define HM_A LT(MOD2,KC_A)
@@ -58,6 +59,7 @@ enum {
 #define HM_QUOT TD(TD_QUOT)
 #define HM2_F TD(TD_KC9)
 #define HM2_D TD(TD_LBRC)
+#define HM_LBRC TD(TD_SQBRC)
 #define TLDSL LT(WIN_FN,KC_GRV)
 #define SPRL LT(WIN_FN,KC_SPC)
 #define HM_LALT LALT_T(KC_INS)
@@ -80,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      HM_12,   HM_1,    HM_2,    HM_3,    HM_4,    HM_5,                               HM_6,    HM_7,    HM_8,    HM_9,    HM_10,   HM_11,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
+     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    HM_LBRC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      HM_ESC,  HM_A,    HM_S,    HM_D,    HM_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    HM_SCLN, HM_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -242,6 +244,7 @@ tap_dance_action_t tap_dance_actions[] = {
 	[TD_F10] = ACTION_TAP_DANCE_TAP_HOLD(KC_0, KC_F10),
 	[TD_F11] = ACTION_TAP_DANCE_TAP_HOLD(KC_MINS, KC_F11),
 	[TD_F12] = ACTION_TAP_DANCE_TAP_HOLD(KC_GRV, KC_F12),
+	[TD_SQBRC] = ACTION_TAP_DANCE_TAP_HOLD(KC_LBRC, KC_RBRC),
 };
 
 // clang-format on
@@ -270,6 +273,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		case TD(TD_F10):
 		case TD(TD_F11):
 		case TD(TD_F12):
+		case TD(TD_SQBRC):
             tap_dance_action_t *action = &tap_dance_actions[QK_TAP_DANCE_GET_INDEX(keycode)];
             if (!record->event.pressed && action->state.count && !action->state.finished) {
                 tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)action->user_data;
