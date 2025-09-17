@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,  XXXXXXX,                            XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX, EE_CLR,
+     RM_TOGG, RM_NEXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX, EE_CLR,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   KC_0,    KC_0,    XXXXXXX
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -215,7 +215,7 @@ void tap_dance_b2(tap_dance_state_t *state, void *user_data) {
 		tap_code_delay(KC_NO, 1200);
 		tap_code16(KC_ENT);
     } else {
-        tap_code16(KC_DEL);
+        tap_code16(C(KC_D));
     }
 }
 
