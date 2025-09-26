@@ -38,7 +38,8 @@ set sidescrolloff=5
 set relativenumber
 " Do incremental searching.
 set incsearch
-
+set functiontextobj
+Plug 'vim-scripts/argtextobj.vim'
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 

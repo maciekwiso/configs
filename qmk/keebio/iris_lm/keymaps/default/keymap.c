@@ -13,7 +13,8 @@ enum layers {
 };
 
 enum {
-    TD_B2,
+    TD_FUN1,
+	TD_FUN2,
 	TD_COL,
 	TD_QUOT,
 	TD_COMM,
@@ -48,7 +49,8 @@ enum {
 #define HM_S LSFT_T(KC_S)
 #define HM_D LCTL_T(KC_D)
 #define HM_F LALT_T(KC_F)
-#define HM_B2 TD(TD_B2)
+#define HM_FUN1 TD(TD_FUN1)
+#define HM_FUN2 TD(TD_FUN2)
 #define HM_ESC LT(MOD1,KC_ESC)
 #define HM_SPC LT(MOD3,KC_SPC)
 #define HM_RSFT LSFT_T(KC_ENT)
@@ -86,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      HM_ESC,  HM_A,    HM_S,    HM_D,    HM_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    HM_SCLN, HM_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     HM_LALT, HM_Z,    HM_X,    HM_C,    HM_V,    KC_B,    LSG(KC_LEFT),     HM_B2,   KC_N,    KC_M,    HM_COM,  HM_DOT,  HM_SLSH, KC_RSFT,
+     HM_LALT, HM_Z,    HM_X,    HM_C,    HM_V,    KC_B,    HM_FUN1,          HM_FUN2, KC_N,    KC_M,    HM_COM,  HM_DOT,  HM_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_BSPC, HM_SPC,  KC_DEL,                    KC_LCTL, HM_RSFT, MO(WIN_FN)
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -128,9 +130,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_CAPS,A(KC_TAB),C(S(KC_TAB)),C(KC_TAB),KC_ENT,KC_PGDN,                         XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, XXXXXXX, A(KC_F4),KC_F5,   MS_BTN4, MS_BTN5, KC_F13,           KC_F14, XXXXXXX,  KC_1,    KC_2,    KC_3,    XXXXXXX, EE_CLR,
+     _______, XXXXXXX, A(KC_F4),KC_F5,   MS_BTN4, MS_BTN5, KC_F14,           XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX, EE_CLR,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, _______,                   KC_0,    KC_0,    XXXXXXX
+                                    _______, _______, KC_F13,                    KC_0,    KC_0,    KC_0
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -155,9 +157,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_HOME,          KC_END,  KC_N,    KC_M,    HM_COM,  HM_DOT,  HM_SLSH, KC_RSFT,
+     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT,          KC_RALT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_BSPC, HM_SPC,  KC_DEL,                    KC_LCTL, HM_RSFT, TG(GAME1)
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -203,7 +205,21 @@ void tap_dance_tap_hold_reset(tap_dance_state_t *state, void *user_data) {
         .user_data = (void *)&((tap_dance_tap_hold_t){tap, hold, 0}),               \
     }
 
-void tap_dance_b2(tap_dance_state_t *state, void *user_data) {
+void tap_dance_fun1(tap_dance_state_t *state, void *user_data) {
+    if (state->count >= 4) {
+        tap_code16(LGUI(KC_M));
+    } else if (state->count == 3) {
+        SEND_STRING("Please approve ");
+        tap_code16(C(KC_V));
+        tap_code16(KC_ENT);
+    } else if (state->count == 2) {
+        tap_code16(LSG(KC_LEFT));
+    } else {
+        tap_code16(LCS(KC_1));
+    }
+}
+
+void tap_dance_fun2(tap_dance_state_t *state, void *user_data) {
     if (state->count >= 4) {
         tap_code16(LGUI(KC_M));
     } else if (state->count == 3) {
@@ -220,7 +236,8 @@ void tap_dance_b2(tap_dance_state_t *state, void *user_data) {
 }
 
 tap_dance_action_t tap_dance_actions[] = {
-	[TD_B2] = ACTION_TAP_DANCE_FN(tap_dance_b2),
+	[TD_FUN1] = ACTION_TAP_DANCE_FN(tap_dance_fun1),
+	[TD_FUN2] = ACTION_TAP_DANCE_FN(tap_dance_fun2),
     [TD_COL] = ACTION_TAP_DANCE_TAP_HOLD(KC_SCLN, KC_COLN),
     [TD_QUOT] = ACTION_TAP_DANCE_TAP_HOLD(KC_QUOT, S(KC_QUOT)),
 	[TD_COMM] = ACTION_TAP_DANCE_TAP_HOLD(KC_COMM, S(KC_COMM)),
@@ -320,7 +337,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_RSFT:
-            return 100;
+            return 140;
 	}
 	return TAPPING_TERM;
 }
