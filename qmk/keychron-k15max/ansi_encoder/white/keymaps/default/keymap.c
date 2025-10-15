@@ -42,22 +42,29 @@ enum {
 	TD_CTLC,
 	TD_CTLV,
 	TD_F5,
+	TD_RBRC,
+	TD_UND,
+	TD_MIN,
+	TD_HOM,
+	TD_END,
+	TD_AMP,
+	TD_PIP
 };
 
 #define HM_GRV KC_GRV
 #define HM_Q KC_Q
 #define HM_A LT(MOD2,KC_A)
-#define HM_R KC_R
 #define HM_C TD(TD_CTLC)
 #define HM_V TD(TD_CTLV)
 #define HM_Z TD(TD_CTLZ)
 #define HM_X TD(TD_CTLX)
 #define HM_S LSFT_T(KC_S)
 #define HM_D LCTL_T(KC_D)
-#define HM_F LALT_T(KC_F)
-#define HM_G KC_G
-#define HM_E KC_E
-#define HM_W KC_W
+#define HM_F TD(TD_RBRC)
+#define HM_G TD(TD_MIN)
+#define HM_R TD(TD_UND)
+#define HM_E TD(TD_AMP)
+#define HM_W TD(TD_PIP)
 #define HM_T KC_T
 #define HM_B2 TD(TD_B2)
 #define HM_ESC LT(MOD1,KC_ESC)
@@ -67,8 +74,8 @@ enum {
 #define HM_J KC_J
 #define HM_K KC_K
 #define HM_L KC_L
-#define HM_M KC_M
-#define HM_N KC_N
+#define HM_N TD(TD_HOM)
+#define HM_M TD(TD_END)
 #define HCOM TD(TD_COMM)
 #define HM_DOT TD(TD_DOT)
 #define HM_SLSH TD(TD_SLSH)
@@ -231,6 +238,13 @@ tap_dance_action_t tap_dance_actions[] = {
 	[TD_CTLC] = ACTION_TAP_DANCE_TAP_HOLD(KC_C, C(KC_C)),
 	[TD_CTLV] = ACTION_TAP_DANCE_TAP_HOLD(KC_V, C(KC_V)),
 	[TD_F5] = ACTION_TAP_DANCE_TAP_HOLD(KC_F5, A(KC_F4)),
+	[TD_RBRC] = ACTION_TAP_DANCE_TAP_HOLD(KC_F, S(KC_9)),
+	[TD_MIN] = ACTION_TAP_DANCE_TAP_HOLD(KC_G, KC_MINS),
+	[TD_UND] = ACTION_TAP_DANCE_TAP_HOLD(KC_R, S(KC_MINS)),
+	[TD_HOM] = ACTION_TAP_DANCE_TAP_HOLD(KC_N, KC_HOME),
+	[TD_END] = ACTION_TAP_DANCE_TAP_HOLD(KC_M, KC_END),
+	[TD_AMP] = ACTION_TAP_DANCE_TAP_HOLD(KC_E, S(KC_7)),
+	[TD_PIP] = ACTION_TAP_DANCE_TAP_HOLD(KC_W, S(KC_BSLS)),
 };
 
 // clang-format on
@@ -251,6 +265,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		case TD(TD_CTLC):
 		case TD(TD_CTLV):
 		case TD(TD_F5):
+		case TD(TD_RBRC):
+		case TD(TD_MIN):
+		case TD(TD_UND):
+		case TD(TD_HOM):
+		case TD(TD_END):
+		case TD(TD_AMP):
+		case TD(TD_PIP):
             tap_dance_action_t *action = &tap_dance_actions[QK_TAP_DANCE_GET_INDEX(keycode)];
             if (!record->event.pressed && action->state.count && !action->state.finished) {
                 tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)action->user_data;
@@ -297,7 +318,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_RSFT:
-            return 100;
+            return 140;
 	}
 	return TAPPING_TERM;
 }

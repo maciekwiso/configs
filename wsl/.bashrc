@@ -104,5 +104,6 @@ alias v=nvim
 alias vv='nvim -c ":term" -c startinsert'
 alias j17='export JAVA_HOME=/opt/jdk-17.0.12; export PATH=${JAVA_HOME}/bin:${PATH}'
 alias j24g='export JAVA_HOME=/opt/graalvm-jdk-24.0.2+11.1; export PATH=${JAVA_HOME}/bin:${PATH}'
+alias j25='export JAVA_HOME=/opt/jdk-25+36; export PATH=${JAVA_HOME}/bin:${PATH}'
 # Created by `pipx` on 2025-05-30 19:29:26
 export PATH="$PATH:/root/.local/bin"
