@@ -97,12 +97,13 @@ fi
 #    . /etc/bash_completion
 #fi
 #export PATH="/usr/lib/jvm/java-1.21.0-openjdk-amd64/bin:/opt/nvim-linux-x86_64/bin:${PATH}:/usr/local/go/bin"
-export PATH="/usr/lib/jvm/java-1.21.0-openjdk-amd64/bin:/opt/nvim-linux-x86_64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/Users/macie/AppData/Local/Microsoft/WindowsApps"
-export JAVA_HOME="/usr/lib/jvm/java-1.21.0-openjdk-amd64"
+export PATH="/opt/jdk-25+36/bin:/opt/nvim-linux-x86_64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/Users/macie/AppData/Local/Microsoft/WindowsApps"
+export JAVA_HOME="/opt/jdk-25+36"
 alias pucfg=~/workspace/configs/pushcfgh1.sh
 alias v=nvim
 alias vv='nvim -c ":term" -c startinsert'
 alias j17='export JAVA_HOME=/opt/jdk-17.0.12; export PATH=${JAVA_HOME}/bin:${PATH}'
+alias j21='export JAVA_HOME=/usr/lib/jvm/java-1.21.0-openjdk-amd64; export PATH=${JAVA_HOME}/bin:${PATH}'
 alias j24g='export JAVA_HOME=/opt/graalvm-jdk-24.0.2+11.1; export PATH=${JAVA_HOME}/bin:${PATH}'
 alias j25='export JAVA_HOME=/opt/jdk-25+36; export PATH=${JAVA_HOME}/bin:${PATH}'
 # Created by `pipx` on 2025-05-30 19:29:26

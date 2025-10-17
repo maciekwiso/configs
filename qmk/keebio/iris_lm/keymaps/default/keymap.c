@@ -39,14 +39,7 @@ enum {
 	TD_F11,
 	TD_F12,
 	TD_SQBRC,
-	TD_RBRC,
-	TD_UND,
-	TD_MIN,
-	TD_HOM,
-	TD_END,
-	TD_ARR,
-	TD_AMP,
-	TD_PIP
+	TD_ARR
 };
 
 #define HM_A LT(MOD2,KC_A)
@@ -56,13 +49,13 @@ enum {
 #define HM_X TD(TD_CTLX)
 #define HM_S LSFT_T(KC_S)
 #define HM_D LCTL_T(KC_D)
-#define HM_F TD(TD_RBRC)
-#define HM_G TD(TD_MIN)
-#define HM_R TD(TD_UND)
-#define HM_E TD(TD_AMP)
-#define HM_W TD(TD_PIP)
-#define HM_N TD(TD_HOM)
-#define HM_M TD(TD_END)
+#define HM_F LALT_T(KC_F)
+#define HM_G KC_G
+#define HM_R KC_R
+#define HM_E KC_E
+#define HM_W KC_W
+#define HM_N KC_N
+#define HM_M KC_M
 #define HM_FUN1 TD(TD_FUN1)
 #define HM_FUN2 TD(TD_FUN2)
 #define HM_ESC LT(MOD1,KC_ESC)
@@ -145,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_CAPS,A(KC_TAB),C(S(KC_TAB)),C(KC_TAB),KC_ENT,KC_PGDN,                         XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, XXXXXXX, A(KC_F4),KC_F5,   MS_BTN4, MS_BTN5, KC_F14,           XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX, EE_CLR,
+     _______, MS_BTN1, MS_BTN2, KC_F5,   MS_BTN4, MS_BTN5, KC_F14,           XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX, EE_CLR,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, KC_F13,                    KC_0,    KC_0,    KC_0
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -277,14 +270,7 @@ tap_dance_action_t tap_dance_actions[] = {
 	[TD_F11] = ACTION_TAP_DANCE_TAP_HOLD(KC_MINS, KC_F11),
 	[TD_F12] = ACTION_TAP_DANCE_TAP_HOLD(KC_GRV, KC_F12),
 	[TD_SQBRC] = ACTION_TAP_DANCE_TAP_HOLD(KC_LBRC, KC_RBRC),
-	[TD_RBRC] = ACTION_TAP_DANCE_TAP_HOLD(KC_F, S(KC_9)),
-	[TD_MIN] = ACTION_TAP_DANCE_TAP_HOLD(KC_G, KC_MINS),
-	[TD_UND] = ACTION_TAP_DANCE_TAP_HOLD(KC_R, S(KC_MINS)),
-	[TD_HOM] = ACTION_TAP_DANCE_TAP_HOLD(KC_N, KC_HOME),
-	[TD_END] = ACTION_TAP_DANCE_TAP_HOLD(KC_M, KC_END),
 	[TD_ARR] = ACTION_TAP_DANCE_TAP_HOLD(KC_UP, KC_DOWN),
-	[TD_AMP] = ACTION_TAP_DANCE_TAP_HOLD(KC_E, S(KC_7)),
-	[TD_PIP] = ACTION_TAP_DANCE_TAP_HOLD(KC_W, S(KC_BSLS)),
 };
 
 // clang-format on
@@ -314,14 +300,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		case TD(TD_F11):
 		case TD(TD_F12):
 		case TD(TD_SQBRC):
-		case TD(TD_RBRC):
-		case TD(TD_MIN):
-		case TD(TD_UND):
-		case TD(TD_HOM):
-		case TD(TD_END):
 		case TD(TD_ARR):
-		case TD(TD_AMP):
-		case TD(TD_PIP):
             tap_dance_action_t *action = &tap_dance_actions[QK_TAP_DANCE_GET_INDEX(keycode)];
             if (!record->event.pressed && action->state.count && !action->state.finished) {
                 tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)action->user_data;
@@ -349,9 +328,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-const uint16_t PROGMEM enter_combo3[]   = {KC_UP, KC_RIGHT, COMBO_END};
+const uint16_t PROGMEM enter_combo1[]   = {KC_UP, KC_RIGHT, COMBO_END};
+const uint16_t PROGMEM ALT_F4_combo1[]   = {MS_BTN2, MS_BTN4, COMBO_END};
 combo_t key_combos[] = {
-	COMBO(enter_combo3, KC_ESC),
+	COMBO(enter_combo1, KC_ESC),
+	COMBO(ALT_F4_combo1, A(KC_F4)),
 };
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
