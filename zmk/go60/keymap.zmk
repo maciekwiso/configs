@@ -162,6 +162,7 @@
 #define LAYER_symbols 4
 #define LAYER_a_windows 5
 #define LAYER_game1 6
+#define LAYER_numpad 7
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 #ifndef LAYER_Lower
@@ -183,23 +184,36 @@
 /* Custom Device-tree */
 &mt {
     flavor = "tap-preferred";
-    quick-tap-ms = <150>;
-    require-prior-idle-ms = <125>;
+    quick-tap-ms = <200>;
+    require-prior-idle-ms = <100>;
+    tapping-term-ms = <250>;
 };
 
 &lt {
     flavor = "tap-preferred";
-    quick-tap-ms = <150>;
-    require-prior-idle-ms = <125>;
+    quick-tap-ms = <200>;
+    require-prior-idle-ms = <100>;
 };
 
 /* Input Listeners */
 &cirque_rh_listener {
     input-processors = <&zip_xy_scaler 3 1>;
+    layer_esc_hold {
+        layers = <LAYER_esc_hold>;
+        input-processors = <&zip_x_scaler 3 1>, <&zip_y_scaler 0 1>, <&zip_xy_to_scroll_mapper>;
+    };
+    layer_space_hold {
+        layers = <LAYER_space_hold>;
+        input-processors = <&zip_x_scaler 0 1>, <&zip_y_scaler 1 10>, <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&zip_xy_to_scroll_mapper>;
+    };
 };
 
 &cirque_lh_listener {
-    input-processors = <&zip_xy_to_scroll_mapper>, <&zip_xy_scaler 11 12>, <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&zip_click_to_right_click_mapper>, <&zip_scroll_scaler 1 8>;
+    input-processors = <&zip_x_scaler 0 1>, <&zip_y_scaler 1 10>, <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&zip_xy_to_scroll_mapper>, <&zip_click_to_right_click_mapper>;
+    layer_space_hold {
+        layers = <LAYER_space_hold>;
+        input-processors = <&zip_x_scaler 11 12>, <&zip_y_scaler 0 1>, <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&zip_xy_to_scroll_mapper>, <&zip_click_to_right_click_mapper>;
+    };
 };
 
 /* System behavior and macros */
@@ -346,13 +360,25 @@ behaviors {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LS(N1)>, <&kp LS(LG(LEFT))>, <&plapprove>;
+            bindings = <&kp LC(LS(N1))>, <&kp LS(LG(LEFT))>, <&plapprove>;
         };
         td1: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LG(M)>, <&lockwin>, <&plapprove>;
+            bindings = <&mkp LCLK>, <&lockwin>, <&plapprove>;
+        };
+        td2: tap_dance_2 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mt LALT INS>, <&kp LC(LG(RIGHT))>;
+        };
+        td3: tap_dance_3 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LGUI>, <&kp LC(LG(LEFT))>;
         };
 };
 };
@@ -382,19 +408,22 @@ behaviors {
             label = "&LOCKWIN";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <0>;
+            tap-ms = <10>;
             wait-ms = <0>;
             bindings = <&macro_press>
                 , <&kp LCTRL>
                 , <&kp LALT>
                 , <&macro_tap>
                 , <&kp END>
-                , <&macro_wait_time 1000>
+                , <&macro_wait_time 2000>
                 , <&macro_tap>
-                , <&kp RET>
+                , <&none>
+                , <&macro_wait_time 1>
                 , <&macro_release>
+                , <&kp LALT>
                 , <&kp LCTRL>
-                , <&kp LALT>;
+                , <&macro_tap>
+                , <&kp RET>;
         };
 
         // please approve paste
@@ -450,7 +479,7 @@ behaviors {
         se: se {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <140>;
             bindings = <&kp>, <&kp>;
             quick-tap-ms = <150>;
         };
@@ -459,11 +488,11 @@ behaviors {
         mtwc: mtwc {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
             bindings = <&win_choose>, <&kp>;
             flavor = "tap-preferred";
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <100>;
         };
     };
 };
@@ -489,12 +518,12 @@ behaviors {
 
         layer_Base {
             bindings = <
-          &mt F12 GRAVE    &mt F1 N1       &mt F2 N2     &mt F3 N3        &mt F4 N4    &mt F5 N5                                                                                  &mt F6 N6          &mt F7 N7            &mt F8 N8        &mt F9 N9         &mt F10 N0    &mt F11 MINUS
-                &kp TAB        &kp Q  &mt LS(BSLH) W  &mt LS(N7) E  &mt LS(MINUS) R        &kp T                                                                                      &kp Y              &kp U                &kp I            &kp O              &kp P    &mt RBKT LBKT
- &lt LAYER_esc_hold ESC    &mtwc 0 A     &mt LSHFT S   &mt LCTRL D     &mt LS(N9) F  &mt MINUS G                                                                                      &kp H              &kp J                &kp K            &kp L  &mt LS(SEMI) SEMI  &mt LS(SQT) SQT
-   &magic LAYER_Magic 0  &mt LC(Z) Z     &mt LC(X) X   &mt LC(C) C      &mt LC(V) V        &kp B                                                                                 &mt HOME N          &mt END M  &mt LS(COMMA) COMMA  &mt LS(DOT) DOT      &mt BSLH FSLH      &mt DOWN UP
-                                            &kp LGUI  &mt LALT INS         &kp BSPC                                                                                                          &mo LAYER_symbols             &kp LEFT        &kp RIGHT
-                                                                                                  &lt LAYER_space_hold SPACE  &kp DEL    &td0    &td1  &kp LCTRL  &se LSHFT RET
+          &mt F12 GRAVE    &mt F1 N1       &mt F2 N2     &mt F3 N3        &mt F4 N4       &mt F5 N5                                                                                  &mt F6 N6          &mt F7 N7            &mt F8 N8        &mt F9 N9         &mt F10 N0    &mt F11 MINUS
+                &kp TAB        &kp Q  &mt LS(BSLH) W  &mt LS(N7) E  &mt LS(MINUS) R           &kp T                                                                                      &kp Y              &kp U                &kp I            &kp O              &kp P    &mt RBKT LBKT
+ &lt LAYER_esc_hold ESC    &mtwc 0 A     &mt LSHFT S   &mt LCTRL D     &mt LS(N9) F  &mt KP_MINUS G                                                                                      &kp H              &kp J                &kp K            &kp L  &mt LS(SEMI) SEMI  &mt LS(SQT) SQT
+   &magic LAYER_Magic 0  &mt LC(Z) Z     &mt LC(X) X   &mt LC(C) C      &mt LC(V) V           &kp B                                                                                 &mt HOME N          &mt END M  &mt LS(COMMA) COMMA  &mt LS(DOT) DOT      &mt BSLH FSLH      &mt DOWN UP
+                                                &td3          &td2         &kp BSPC                                                                                                             &mo LAYER_symbols             &kp LEFT        &kp RIGHT
+                                                                                                     &lt LAYER_space_hold SPACE  &kp DEL    &td0    &td1  &kp LCTRL  &se LSHFT RET
             >;
         };
 
@@ -511,23 +540,23 @@ behaviors {
 
         layer_esc_hold {
             bindings = <
-           &none       &none            &none       &none       &none          &none                                                                 &none    &none      &none   &none   &none   &none
-           &none    &kp HOME           &kp UP     &kp END   &kp PG_UP      &kp PG_DN                                                                 &none   &kp N7     &kp N8  &kp N9   &none   &none
-           &none    &kp LEFT         &kp DOWN   &kp RIGHT     &kp RET      &kp MINUS                                                                 &none   &kp N4     &kp N5  &kp N6   &none   &none
- &rgb_ug RGB_TOG  &kp LS(N3)       &kp LS(N2)  &kp LS(N5)  &kp LS(N8)  &kp LS(EQUAL)                                                                 &none   &kp N1     &kp N2  &kp N3   &none   &none
-                              &rgb_ug RGB_EFF   &kp LSHFT   &kp LCTRL                                                                                       &kp DOT  &kp COMMA   &none
+           &none    &kp HOME            &none       &none       &none          &none                                                                 &none    &none      &none   &none   &none   &none
+           &none    &kp LEFT           &kp UP     &kp END   &kp PG_UP      &kp PG_DN                                                                 &none   &kp N7     &kp N8  &kp N9   &none   &none
+           &none  &kp LS(N3)         &kp DOWN   &kp RIGHT     &kp RET      &kp MINUS                                                                 &none   &kp N4     &kp N5  &kp N6   &none   &none
+ &rgb_ug RGB_TOG       &none       &kp LS(N2)  &kp LS(N5)  &kp LS(N8)  &kp LS(EQUAL)                                                                 &none   &kp N1     &kp N2  &kp N3   &none   &none
+                              &rgb_ug RGB_EFF   &kp LCTRL    &kp BSPC                                                                                       &kp DOT  &kp COMMA   &none
                                                                                       &kp SPACE  &mt LS(N0) LS(N9)   &none   &none  &kp N0  &kp N0
             >;
         };
 
         layer_space_hold {
             bindings = <
- &bootloader        &none            &none        &none     &none      &none                                                    &bootloader    &none      &none   &none   &none  &to LAYER_game1
-       &none    &kp LSHFT        &kp LCTRL     &kp HOME   &kp END  &kp PG_UP                                                          &none   &kp N7     &kp N8  &kp N9   &none            &none
-    &kp CAPS  &kp LA(TAB)  &kp LC(LS(TAB))  &kp LC(TAB)   &kp RET  &kp PG_DN                                                          &none   &kp N4     &kp N5  &kp N6   &none            &none
-       &none    &mkp LCLK        &mkp RCLK       &kp F5  &mkp MB4   &mkp MB5                                                          &none   &kp N1     &kp N2  &kp N3   &none            &none
-                                     &none        &none     &none                                                                            &kp DOT  &kp COMMA   &none
-                                                                               &none  &kp F13  &kp F14   &none  &kp N0  &kp N0
+ &bootloader        &none            &none        &none             &none      &none                                                    &bootloader    &none      &none   &none   &none  &to LAYER_game1
+       &none    &kp LSHFT        &kp LCTRL     &kp HOME           &kp END  &kp PG_UP                                                          &none   &kp N7     &kp N8  &kp N9   &none            &none
+    &kp CAPS  &kp LA(TAB)  &kp LC(LS(TAB))  &kp LC(TAB)           &kp RET  &kp PG_DN                                                          &none   &kp N4     &kp N5  &kp N6   &none            &none
+       &none    &mkp LCLK        &mkp RCLK       &kp F5          &mkp MB4   &mkp MB5                                                          &none   &kp N1     &kp N2  &kp N3   &none            &none
+                                     &none        &none  &to LAYER_numpad                                                                            &kp DOT  &kp COMMA   &none
+                                                                                       &none  &kp F13  &kp F14   &none  &kp N0  &kp N0
             >;
         };
 
@@ -544,12 +573,12 @@ behaviors {
 
         layer_a_windows {
             bindings = <
-  &none   &none     &none     &none   &none      &none                                                         &none   &none   &none   &none   &none   &none
-  &none   &none    &kp N5    &kp N6  &kp N7     &kp N8                                                         &none   &none   &none   &none   &none   &none
-  &none   &none    &kp N1    &kp N2  &kp N3     &kp N4                                                        &kp N5  &kp N6  &kp N7  &kp N8  &kp N9   &none
-  &none   &none  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT                                                         &none   &none   &none   &none   &none   &none
-                    &none     &none   &kp M                                                                            &none   &none   &none
-                                                        &kp LS(LEFT)   &none   &none   &none   &none   &none
+  &none   &none         &none          &none   &none      &none                                                                       &none         &none          &none       &none   &none   &none
+  &none  &kp N9        &kp N5         &kp N6  &kp N7     &kp N8                                                                       &none         &none          &none       &none   &none   &none
+  &none   &none        &kp N1         &kp N2  &kp N3     &kp N4                                                                   &kp LC(D)  &kp LC(LEFT)  &kp LC(RIGHT)  &kp LC(F4)   &none   &none
+  &none   &none      &kp LEFT       &kp DOWN  &kp UP  &kp RIGHT                                                                       &none         &none          &none       &none   &none   &none
+                 &kp LC(LEFT)  &kp LC(RIGHT)   &kp M                                                                                                &none          &none       &none
+                                                                 &kp LS(LEFT)  &kp LS(RIGHT)   &none   &none  &kp LCTRL  &kp TAB
             >;
         };
 
@@ -561,6 +590,17 @@ behaviors {
  &kp LSHFT      &kp Z      &kp X      &kp C      &kp V      &kp B                                                                      &kp N      &kp M  &mt LS(COMMA) COMMA  &mt LS(DOT) DOT      &mt BSLH FSLH      &mt DOWN UP
                            &none   &kp LALT   &kp BSPC                                                                                          &kp RET             &kp LEFT        &kp RIGHT
                                                                    &kp SPACE  &kp DEL  &kp LGUI   &to 0  &kp LCTRL  &se LSHFT RET
+            >;
+        };
+
+        layer_numpad {
+            bindings = <
+  &none   &none      &none    &none     &none   &none                                                       &none    &none      &none   &none   &none   &none
+  &none   &none     &kp N7   &kp N8    &kp N9   &none                                                       &none   &kp N7     &kp N8  &kp N9   &none   &none
+  &none   &none     &kp N4   &kp N5    &kp N6   &none                                                       &none   &kp N4     &kp N5  &kp N6   &none   &none
+  &none   &none     &kp N1   &kp N2    &kp N3   &none                                                       &none   &kp N1     &kp N2  &kp N3   &none   &none
+                 &kp COMMA  &kp DOT  &kp BSPC                                                                      &kp DOT  &kp COMMA   &none
+                                                       &kp SPACE  &kp N0   &to 0  &kp RET  &kp N0  &kp N0
             >;
         };
 
