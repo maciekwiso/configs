@@ -532,7 +532,7 @@ behaviors {
   &bt BT_CLR     &kp C_BRI_DN     &kp C_BRI_UP       &kp C_PREV       &kp C_NEXT         &kp C_PP                                                  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP   &none   &none  &bt BT_CLR_ALL
  &bootloader  &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                       &none         &none         &none   &none   &none     &bootloader
   &sys_reset  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                       &none         &none         &none   &none   &none      &sys_reset
-       &none            &none            &bt_0            &bt_1            &bt_2            &bt_3                                                       &none         &none         &none   &none   &none           &to 0
+       &none            &none            &bt_0            &bt_1            &bt_2            &bt_3                                                       &none         &none         &none   &none   &none  &to LAYER_Base
                                   &out OUT_USB            &none            &none                                                                                      &none         &none   &none
                                                                                                     &none   &none   &none   &none   &none   &none
             >;
@@ -551,12 +551,12 @@ behaviors {
 
         layer_space_hold {
             bindings = <
- &bootloader        &none            &none        &none             &none      &none                                                    &bootloader    &none      &none   &none   &none  &to LAYER_game1
-       &none    &kp LSHFT        &kp LCTRL     &kp HOME           &kp END  &kp PG_UP                                                          &none   &kp N7     &kp N8  &kp N9   &none            &none
-    &kp CAPS  &kp LA(TAB)  &kp LC(LS(TAB))  &kp LC(TAB)           &kp RET  &kp PG_DN                                                          &none   &kp N4     &kp N5  &kp N6   &none            &none
-       &none    &mkp LCLK        &mkp RCLK       &kp F5          &mkp MB4   &mkp MB5                                                          &none   &kp N1     &kp N2  &kp N3   &none            &none
-                                     &none        &none  &to LAYER_numpad                                                                            &kp DOT  &kp COMMA   &none
-                                                                                       &none  &kp F13  &kp F14   &none  &kp N0  &kp N0
+ &bootloader             &none              &none        &none             &none      &none                                                    &bootloader    &none      &none   &none   &none  &to LAYER_game1
+       &none         &kp LSHFT          &kp LCTRL     &kp HOME           &kp END  &kp PG_UP                                                          &none   &kp N7     &kp N8  &kp N9   &none            &none
+    &kp CAPS       &kp LA(TAB)    &kp LC(LS(TAB))  &kp LC(TAB)           &kp RET  &kp PG_DN                                                          &none   &kp N4     &kp N5  &kp N6   &none            &none
+     &kp F15  &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))       &kp F5          &mkp MB4   &mkp MB5                                                          &none   &kp N1     &kp N2  &kp N3   &none            &none
+                                        &kp PSCRN        &none  &to LAYER_numpad                                                                            &kp DOT  &kp COMMA   &none
+                                                                                              &none  &kp F13  &kp F14   &none  &kp N0  &kp N0
             >;
         };
 
@@ -573,34 +573,34 @@ behaviors {
 
         layer_a_windows {
             bindings = <
-  &none   &none         &none          &none   &none      &none                                                                       &none         &none          &none       &none   &none   &none
-  &none  &kp N9        &kp N5         &kp N6  &kp N7     &kp N8                                                                       &none         &none          &none       &none   &none   &none
-  &none   &none        &kp N1         &kp N2  &kp N3     &kp N4                                                                   &kp LC(D)  &kp LC(LEFT)  &kp LC(RIGHT)  &kp LC(F4)   &none   &none
-  &none   &none      &kp LEFT       &kp DOWN  &kp UP  &kp RIGHT                                                                       &none         &none          &none       &none   &none   &none
-                 &kp LC(LEFT)  &kp LC(RIGHT)   &kp M                                                                                                &none          &none       &none
-                                                                 &kp LS(LEFT)  &kp LS(RIGHT)   &none   &none  &kp LCTRL  &kp TAB
+  &none   &none     &none         &none          &none      &none                                                                       &none         &none          &none       &none   &none   &none
+  &none  &kp N9    &kp N5        &kp N6         &kp N7     &kp N8                                                                       &none         &none          &none       &none   &none   &none
+  &none   &none    &kp N1        &kp N2         &kp N3     &kp N4                                                                   &kp LC(D)  &kp LC(LEFT)  &kp LC(RIGHT)  &kp LC(F4)   &none   &none
+  &none   &none  &kp LEFT      &kp DOWN         &kp UP  &kp RIGHT                                                                       &none         &none          &none       &none   &none   &none
+                    &kp M  &kp LC(LEFT)  &kp LC(RIGHT)                                                                                                &none          &none       &none
+                                                                   &kp LS(LEFT)  &kp LS(RIGHT)   &none   &none  &kp LCTRL  &kp TAB
             >;
         };
 
         layer_game1 {
             bindings = <
-   &kp ESC  &mt F1 N1  &mt F2 N2  &mt F3 N3  &mt F4 N4  &mt F5 N5                                                                  &mt F6 N6  &mt F7 N7            &mt F8 N8        &mt F9 N9         &mt F10 N0    &mt F11 MINUS
-   &kp TAB      &kp Q      &kp W      &kp E      &kp R      &kp T                                                                      &kp Y      &kp U                &kp I            &kp O              &kp P    &mt RBKT LBKT
- &kp LCTRL      &kp A      &kp S      &kp D      &kp F      &kp G                                                                      &kp H      &kp J                &kp K            &kp L  &mt LS(SEMI) SEMI  &mt LS(SQT) SQT
- &kp LSHFT      &kp Z      &kp X      &kp C      &kp V      &kp B                                                                      &kp N      &kp M  &mt LS(COMMA) COMMA  &mt LS(DOT) DOT      &mt BSLH FSLH      &mt DOWN UP
-                           &none   &kp LALT   &kp BSPC                                                                                          &kp RET             &kp LEFT        &kp RIGHT
-                                                                   &kp SPACE  &kp DEL  &kp LGUI   &to 0  &kp LCTRL  &se LSHFT RET
+   &kp ESC  &mt F1 N1  &mt F2 N2  &mt F3 N3  &mt F4 N4  &mt F5 N5                                                                          &mt F6 N6  &mt F7 N7            &mt F8 N8        &mt F9 N9         &mt F10 N0    &mt F11 MINUS
+   &kp TAB      &kp Q      &kp W      &kp E      &kp R      &kp T                                                                              &kp Y      &kp U                &kp I            &kp O              &kp P    &mt RBKT LBKT
+ &kp LCTRL      &kp A      &kp S      &kp D      &kp F      &kp G                                                                              &kp H      &kp J                &kp K            &kp L  &mt LS(SEMI) SEMI  &mt LS(SQT) SQT
+ &kp LSHFT      &kp Z      &kp X      &kp C      &kp V      &kp B                                                                              &kp N      &kp M  &mt LS(COMMA) COMMA  &mt LS(DOT) DOT      &mt BSLH FSLH      &mt DOWN UP
+                           &none   &kp LALT   &kp BSPC                                                                                                  &kp RET             &kp LEFT        &kp RIGHT
+                                                                   &kp SPACE  &kp DEL  &kp LGUI  &to LAYER_Base  &kp LCTRL  &se LSHFT RET
             >;
         };
 
         layer_numpad {
             bindings = <
-  &none   &none      &none    &none     &none   &none                                                       &none    &none      &none   &none   &none   &none
-  &none   &none     &kp N7   &kp N8    &kp N9   &none                                                       &none   &kp N7     &kp N8  &kp N9   &none   &none
-  &none   &none     &kp N4   &kp N5    &kp N6   &none                                                       &none   &kp N4     &kp N5  &kp N6   &none   &none
-  &none   &none     &kp N1   &kp N2    &kp N3   &none                                                       &none   &kp N1     &kp N2  &kp N3   &none   &none
-                 &kp COMMA  &kp DOT  &kp BSPC                                                                      &kp DOT  &kp COMMA   &none
-                                                       &kp SPACE  &kp N0   &to 0  &kp RET  &kp N0  &kp N0
+  &none   &none      &none    &none     &none   &none                                                               &none    &none      &none   &none   &none   &none
+  &none   &none     &kp N7   &kp N8    &kp N9   &none                                                               &none   &kp N7     &kp N8  &kp N9   &none   &none
+  &none   &none     &kp N4   &kp N5    &kp N6   &none                                                               &none   &kp N4     &kp N5  &kp N6   &none   &none
+  &none   &none     &kp N1   &kp N2    &kp N3   &none                                                               &none   &kp N1     &kp N2  &kp N3   &none   &none
+                 &kp COMMA  &kp DOT  &kp BSPC                                                                              &kp DOT  &kp COMMA   &none
+                                                       &kp SPACE  &kp N0  &to LAYER_Base  &kp RET  &kp N0  &kp N0
             >;
         };
 
