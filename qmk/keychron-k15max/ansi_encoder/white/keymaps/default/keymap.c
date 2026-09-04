@@ -312,7 +312,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 const uint16_t PROGMEM esc_combo1[]   = {KC_UP, KC_RIGHT, COMBO_END};
-const uint16_t PROGMEM ALT_F4_combo1[]   = {MS_BTN2, MS_BTN4, COMBO_END};
+const uint16_t PROGMEM ALT_F4_combo1[]   = {C(G(KC_RIGHT)), MS_BTN4, COMBO_END};
 combo_t key_combos[] = {
 	COMBO(esc_combo1, KC_ESC),
 	COMBO(ALT_F4_combo1, A(KC_F4)),
